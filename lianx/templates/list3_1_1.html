@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"><head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>爱宠-首页</title>
+	<link rel="stylesheet" type="text/css" href="../static/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="../static/css/main.css">
+	<script type="text/javascript" src="../static/js/jquery-1.12.4.min.js"></script>
+	<script src="../static/js/index.js"></script>
+	<script type="text/javascript">
+
+		$(function(){
+			if($('.login_btn').text().indexOf('欢迎') >= 0){
+				$.get('/cart/count_judge/', function (data){
+					$('#show_count').text(data.count);
+				});
+			}
+		})
+
+	</script>
+	
+	<script type="text/javascript" src="../static/js/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="../static/js/slide.js"></script>
+
+	<style>
+		.div1{
+			width: 80%;
+			height: 300px;
+			background-color: aquamarine;
+			margin: 50px auto;
+		}
+	</style>
+</head>
+<body>
+	<div class="header_con">
+		<div class="header">
+			<div class="welcome fl">欢迎来到爱宠商城!</div>
+			<div class="fr">
+				<div class="login_btn fl">
+					
+					欢迎您：<em>asdfg</em>
+					<span>|</span>
+					<a href="/logout/">退出</a>
+					
+				</div>
+				<div class="user_link fl">
+					<span>|</span>
+					<a href="/info/">用户中心</a>
+					<span>|</span>
+					<a href="/cart/">我的购物车</a>
+					<span>|</span>
+					<a href="/order/">我的订单</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="search_bar clearfix">
+		<a href="/" class="logo fl"><img src="../static/images/logo.png"></a>
+		<div class="search_con fl">
+			<form role="search" method="get" id="searchform" action="/search/">
+				<input type="text" class="input_text fl" name="q" placeholder="搜索商品" requeired="">
+				<button type="summit" class="input_btn fr">搜索</button>
+			</form>
+		</div>
+		<div class="guest_cart fr">
+			<a href="/cart/" class="cart_name fl">我的购物车</a>
+			<div class="goods_count fl" id="show_count">0</div>
+		</div>
+	</div>
+
+
+	<div class="navbar_con">
+		<div class="navbar">
+			<h1 class="fl">全部内容</h1>
+			<ul class="navlist fl">
+				<li><a href="/">首页</a></li>
+				<li class="interval">|</li>
+				<li><a href="#">问卷调查</a></li>
+				<li class="interval">|</li>
+				<li><a href="#">抽奖</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="blogsbox"> </div>
+	
+
+
+	<div class="footer">
+		<div class="foot_link">
+			<a href="#">关于我们</a>
+			<span>|</span>
+			<a href="#">联系我们</a>
+			<span>|</span>
+			<a href="#">招聘人才</a>
+			<span>|</span>
+			<a href="#">友情链接</a>
+		</div>
+		<p>CopyRight © 2016 北京爱宠有限公司 All Rights Reserved</p>
+		<p>电话：010-****888    京ICP备*******8号</p>
+	</div>
+
+    
+	<script type="text/javascript" src="../static/js/slideshow.js"></script>
+	<script type="text/javascript">
+		BCSlideshow('focuspic');
+		var oFruit = document.getElementById('fruit_more');
+		var oShownum = document.getElementById('show_count');
+
+		var hasorder = localStorage.getItem('order_finish');
+
+		if(hasorder)
+		{
+			oShownum.innerHTML = '2';
+		}
+
+		oFruit.onclick = function(){
+			window.location.href = 'list.html';
+		}
+	</script>
+
+
+
+</body></html>

@@ -1,0 +1,246 @@
+<!--<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">-->
+<!--<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">-->
+
+<!doctype html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>爱宠-查看自己页</title>
+	<link rel="stylesheet" type="text/css" href="/static/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/main.css">
+	<script type="text/javascript" src="/static/js/jquery-1.12.4.min.js"></script>
+<!--	<script type="text/javascript">-->
+
+<!--		$(function(){-->
+<!--			if($('.login_btn').text().indexOf('欢迎') >= 0){-->
+<!--				$.get('/cart/count_judge/', function (data){-->
+<!--					$('#show_count').text(data.count);-->
+<!--				});-->
+<!--			}-->
+<!--		})-->
+
+<!--	</script>-->
+
+	<script type="text/javascript" src="/static/js/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/static/js/slide.js"></script>
+	<style>
+		#div1{
+			width: 900px;
+			//height: 300px;
+			background-color: aquamarine;
+			margin: 20px auto;
+			position: relative;
+		}
+		#img1{
+			width:200px;
+			height:80px;
+		}
+		img{
+			width:155px;
+			height:110px;
+			margin: 5px 10px;
+		}
+		.p1{
+			margin: 5px 70px 5px 15px;
+			/* margin-left: 15px; */
+		}
+		.a1{
+			padding: 20px;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="header_con">
+		<div class="header">
+			<div class="welcome fl">欢迎来到爱宠商城!</div>
+			<div class="fr">
+				<div class="login_btn fl">
+
+<!--					欢迎您：<em>asdfg</em>-->
+<!--					<span>|</span>-->
+<!--					<a href="#">{{ user }}</a>-->
+					<a href="/logout/">退出</a>
+
+				</div>
+				<div class="user_link fl">
+					<span>|</span>
+					<a href="/info/">用户中心</a>
+					<span>|</span>
+					<a href="/cart/">我的购物车</a>
+					<span>|</span>
+					<a href="/order/">我的订单</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="search_bar clearfix">
+		<a href="/index" class="logo fl"><img id="img1" src="/static/images/logo.png"></a>
+		<div class="search_con fl">
+			<form role="search" method="get" id="searchform" action="/search/">
+				<input type="text" class="input_text fl" name="q" placeholder="搜索商品" requeired="">
+				<button type="summit" class="input_btn fr">搜索</button>
+			</form>
+		</div>
+		<div class="guest_cart fr">
+			<a href="/cart/" class="cart_name fl">我的购物车</a>
+			<div class="goods_count fl" id="show_count">0</div>
+		</div>
+	</div>
+
+
+	<div class="navbar_con">
+		<div class="navbar">
+			<h1 class="fl">全部商品分类</h1>
+			<ul class="navlist fl">
+				<li><a href="/">首页</a></li>
+				<li class="interval">|</li>
+				<li><a href="#">问卷调查</a></li>
+				<li class="interval">|</li>
+				<li><a href="#">抽奖</a></li>
+			</ul>
+		</div>
+	</div>
+
+<!-- <div id="div1">
+	<p class="p1">mutual_id</p>
+	<p class="p1">用户名</p>
+	<img src="../static/images/banner01.jpg" alt="">
+	<img src="../static/images/banner02.jpg" alt="">
+	<img src="../static/images/banner03.jpg" alt="">
+	<img src="../static/images/banner04.jpg" alt="">
+	<img src="../static/images/banner05.jpg" alt="">
+	<p class="p1">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias, repellendus quibusdam. Veniam aliquam soluta, aperiam minus illum ullam natus rerum blanditiis corrupti voluptas ipsam ipsum placeat, quia cumque, facilis quisquam!
+
+	</p>
+	<p class="p1">评论量：999</p>
+	<p class="p1">收藏量：888</p>
+	<a class="a1" href="#">评论</a>
+	<a class="a1" href=#>收藏</a>
+	<p class="p1">name的评论：xxxxxxxxx</p>
+</div> -->
+
+<!-- <div id="div1">
+	<p class="p1">mutual_id</p>
+	<p class="p1">用户名</p>
+	<img src="../static/images/banner01.jpg" alt="">
+	<img src="../static/images/banner02.jpg" alt="">
+	<img src="../static/images/banner03.jpg" alt="">
+	<img src="../static/images/banner04.jpg" alt="">
+	<img src="../static/images/banner05.jpg" alt="">
+	<p class="p1">评论量：999</p>
+	<p class="p1">收藏量：888</p>
+	<a class="a1" href="#">评论</a>
+	<a class="a1" href=#>收藏</a>
+	<p class="p1">name的评论：xxxxxxxxx</p>
+</div> -->
+
+<!-- <div id="div1">
+		<p class="p1">mutual_id</p>
+		<p class="p1">用户名</p>
+		<p class="p1">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias, repellendus quibusdam. Veniam aliquam soluta, aperiam minus illum ullam natus rerum blanditiis corrupti voluptas ipsam ipsum placeat, quia cumque, facilis quisquam!
+	
+		</p>
+		<p class="p1">评论量：999</p>
+		<p class="p1">收藏量：888</p>
+		<a class="a1" href="#">评论</a>
+		<a class="a1" href=#>收藏</a>
+		<p class="p1">name的评论：xxxxxxxxx</p>
+</div> -->
+
+
+	<div class="footer">
+		<div class="foot_link">
+			<a href="#">关于我们</a>
+			<span>|</span>
+			<a href="#">联系我们</a>
+			<span>|</span>
+			<a href="#">招聘人才</a>
+			<span>|</span>
+			<a href="#">友情链接</a>
+		</div>
+		<p>CopyRight © 2016 北京爱宠有限公司 All Rights Reserved</p>
+		<p>电话：010-****888    京ICP备*******8号</p>
+	</div>
+
+<script>
+<!--	<script type="text/javascript" src="/static/js/slideshow.js">-->
+<!--	<script type="text/javascript">-->
+<!--		BCSlideshow('focuspic');-->
+<!--		var oFruit = document.getElementById('fruit_more');-->
+<!--		var oShownum = document.getElementById('show_count');-->
+
+<!--		var hasorder = localStorage.getItem('order_finish');-->
+
+<!--		if(hasorder)-->
+<!--		{-->
+<!--			oShownum.innerHTML = '2';-->
+<!--		}-->
+
+<!--		oFruit.onclick = function(){-->
+<!--			window.location.href = 'list.html';-->
+<!--		}-->
+
+$(function(){
+		var token=window.localStorage.getItem('mall_token');
+		var user=window.localStorage.getItem('mall_user');
+		$('.login_btn').prepend('<a href="#">'+user+'</a>');
+		$.ajax({
+		type:'get',
+		url:'http://127.0.0.1:8000/blog/list/'+user,
+		//data:JSON.stringify(post_data),
+		dataType:'json',
+		contentType:'application/json',
+		beforeSend: function(request) {
+					request.setRequestHeader("Authorization",token);
+				},
+		success:function(res){
+			if(res.code==200){
+				alert('获取信息成功');
+				console.log(res.data);
+				//var xxx='<a href="#">'+res.username+'</a>';
+				//$('.login_btn').prepend(xxx);
+				$.each(res.data,function(index,obj){
+					//拼接数据
+					var html='<div id="div1">';
+					html+='<input class=p1 type="hidden" value="'+obj.id+'">';
+					//html+='<p class="p1">'+obj.id+'</p>';
+					html+='<p class="p1">'+obj.created_time+'</p>';
+					html+='<p class="p1">'+obj.user+'</p>';
+					if(obj.image_one){
+						html+='<img src="http://127.0.0.1:8000/media/'+obj.image_one+'" alt="">';
+					}
+					if(obj.image_two){
+						html+='<img src="http://127.0.0.1:8000/media/'+obj.image_two+'" alt="">';
+					}
+					if(obj.image_three){
+						html+='<img src="http://127.0.0.1:8000/media/'+obj.image_three+'" alt="">';
+					}
+					if(obj.image_four){
+						html+='<img src="http://127.0.0.1:8000/media/'+obj.image_four+'" alt="">';
+					}
+					if(obj.image_five){
+						html+='<img src="http://127.0.0.1:8000/media/'+obj.image_five+'" alt="">';
+					}					
+					if(obj.content){
+						html+='<p class="p1">'+obj.content+'</p>';
+					}
+					html+='<p class="p1">评论量：'+obj.comment_num+'</p>';
+					html+='<p class="p1">收藏量：'+obj.collection_num+'</p>';
+					html+='<a href="/delete/'+obj.id+'">删除</a>'
+					html+='</div>';
+					//获取页面元素，在之后添加拼接的数据
+					$('.navbar_con').after(html);
+				})
+			}
+			else{
+				alert(res.error);
+			}
+		}
+	})
+})
+
+</script>
+</body>
+</html>

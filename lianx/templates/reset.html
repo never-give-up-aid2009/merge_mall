@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"><head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>重置密码</title>
+	<link rel="stylesheet" type="text/css" href="../static/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="../static/css/main.css">
+	<script type="text/javascript" src="../static/js/jquery-1.12.4.min.js"></script>
+	
+<script>
+	$(function(){
+
+	var error_pwd;
+	var error_check_password;
+
+	$('#pwd').blur(function() {
+		check_pwd();
+	});
+
+	$('#cpwd').blur(function() {
+		check_cpwd();
+	});
+
+	function check_pwd(){
+		var len = $('#pwd').val().length;
+		if(len<8||len>20)
+		{
+			$('#pwd').next().html('密码最少8位，最长20位')
+			$('#pwd').next().show();
+			error_pwd = true;
+		}
+		else
+		{
+			$('#pwd').next().hide();
+			error_pwd = false;
+		}
+	}
+
+	function check_cpwd(){
+		var pass = $('#pwd').val();
+		var cpass = $('#cpwd').val();
+
+		if(pass!=cpass)
+		{
+			$('#cpwd').next().html('两次输入的密码不一致')
+			$('#cpwd').next().show();
+			error_check_password = true;
+		}
+		else
+		{
+			$('#cpwd').next().hide();
+			error_check_password = false;
+		}
+
+	}
+
+	$('form').submit(function() {
+		check_pwd();
+		check_cpwd();
+
+		if (error_pwd || error_check_password)
+		{
+			return false;
+		}
+
+	});
+
+	})
+</script>
+
+</head>
+<body>
+
+	<div class="login_top clearfix">
+		<a href="index.html" class="login_logo"><img src="../static/images/logo02.png"></a>
+	</div>
+
+	<div class="login_form_bg">
+		<div class="login_form_wrap clearfix">
+			<div class="login_banner fl"></div>
+			<div class="slogan fl">日夜兼程 · 发现美好</div>
+			<div class="login_form fr">
+				<div class="login_title clearfix">
+					<h1>重置密码</h1>
+					<a href="/login/">立即登录</a>
+				</div>
+				<div class="form_input">
+					<form action="/user/reset/" method="post">
+						<input type="hidden" name="csrfmiddlewaretoken" value="cj0WOMoTJzjDqK3hC2ZaVUWZ4UzUT5zcXs4Rnqi2TQf7Iwt4BzsupOZ5oxp4YHwA">
+						<ul>
+							<li>
+								<input type="password" name="pwd" id="pwd" placeholder="请输入密码">
+								<div class="pwd_error">输入错误</div>
+							</li>
+							<li>
+								<input type="password" name="cpwd" id="cpwd" placeholder="请输入密码">
+								<div class="cpwd_error">输入错误</div>
+							</li>
+							<li>
+								<input type="submit" value="重置密码" class="input_submit">
+							</li>
+						</ul>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+<div class="footer no-mp">
+    <div class="foot_link">
+        <a href="#">关于我们</a>
+        <span>|</span>
+        <a href="#">联系我们</a>
+        <span>|</span>
+        <a href="#">招聘人才</a>
+        <span>|</span>
+        <a href="#">友情链接</a>
+    </div>
+    <p>CopyRight © 2016 北京爱宠有限公司 All Rights Reserved</p>
+    <p>电话：010-****888    京ICP备*******8号</p>
+</div>
+
+
+</body></html>

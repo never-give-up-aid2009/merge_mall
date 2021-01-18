@@ -1,0 +1,432 @@
+<!--<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">-->
+<!--<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">-->
+
+<!doctype html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>爱宠-查看所有页</title>
+	<link rel="stylesheet" type="text/css" href="/static/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/main.css">
+	<script type="text/javascript" src="/static/js/jquery-1.12.4.min.js"></script>
+<!--	<script type="text/javascript">-->
+
+<!--		$(function(){-->
+<!--			if($('.login_btn').text().indexOf('欢迎') >= 0){-->
+<!--				$.get('/cart/count_judge/', function (data){-->
+<!--					$('#show_count').text(data.count);-->
+<!--				});-->
+<!--			}-->
+<!--		})-->
+
+<!--	</script>-->
+
+	<script type="text/javascript" src="/static/js/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/static/js/slide.js"></script>
+	<style>
+		#div1{
+			width: 900px;
+			//height: 300px;
+			background-color: aquamarine;
+			margin: 20px auto;
+			//position: relative;
+		}
+		#img1{
+			width:200px;
+			height:80px;
+		}
+		img{
+			width:155px;
+			height:110px;
+			margin: 5px 5px 5px 18px;
+		}
+		.p1{
+			margin: 5px 130px 5px 15px;
+			/* margin-left: 15px; */
+		}
+		.a1{
+			padding: 0px;
+			margin: 5px 5px 5px 20px;
+		}
+
+		.c1{
+			postion:relative;
+			color:#65e;
+			font-size: 18px;
+			margin: 5px 5px 5px 20px;
+		}
+		.p2{
+			postion:absolute;
+			left:10px;
+			display: inline-block;
+		}
+		#restore{
+			postion:absolute;
+			right:10px;
+			display: inline-block;
+		}
+		body{
+			font-size: 25px;
+		}
+		.reply_textarea{
+			margin: 5px 5px 5px 20px;
+		}
+	</style>
+</head>
+<body>
+	<div class="header_con">
+		<div class="header">
+			<div class="welcome fl">欢迎来到爱宠商城!</div>
+			<div class="fr">
+				<div class="login_btn fl">
+
+<!--					欢迎您：<em>asdfg</em>-->
+<!--					<span>|</span>-->
+<!--					<a href="#">{{ user }}</a>-->
+					<a href="/logout/">退出</a>
+
+				</div>
+				<div class="user_link fl">
+					<span>|</span>
+					<a href="/info/">用户中心</a>
+					<span>|</span>
+					<a href="/cart/">我的购物车</a>
+					<span>|</span>
+					<a href="/order/">我的订单</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="search_bar clearfix">
+		<a href="/index" class="logo fl"><img id="img1" src="/static/images/logo.png"></a>
+		<div class="search_con fl">
+			<form role="search" method="get" id="searchform" action="/search/">
+				<input type="text" class="input_text fl" name="q" placeholder="搜索商品" requeired="">
+				<button type="summit" class="input_btn fr">搜索</button>
+			</form>
+		</div>
+		<div class="guest_cart fr">
+			<a href="/cart/" class="cart_name fl">我的购物车</a>
+			<div class="goods_count fl" id="show_count">0</div>
+		</div>
+	</div>
+
+
+	<div class="navbar_con">
+		<div class="navbar">
+			<h1 class="fl">全部商品分类</h1>
+			<ul class="navlist fl">
+				<li><a href="/">首页</a></li>
+				<li class="interval">|</li>
+				<li><a href="#">问卷调查</a></li>
+				<li class="interval">|</li>
+				<li><a href="#">抽奖</a></li>
+			</ul>
+		</div>
+	</div>
+
+<!-- <div id="div1">
+	<p class="p1">mutual_id</p>
+	<p class="p1">用户名</p>
+	<img src="../static/images/banner01.jpg" alt="">
+	<img src="../static/images/banner02.jpg" alt="">
+	<img src="../static/images/banner03.jpg" alt="">
+	<img src="../static/images/banner04.jpg" alt="">
+	<img src="../static/images/banner05.jpg" alt="">
+	<p class="p1">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias, repellendus quibusdam. Veniam aliquam soluta, aperiam minus illum ullam natus rerum blanditiis corrupti voluptas ipsam ipsum placeat, quia cumque, facilis quisquam!
+
+	</p>
+	<p class="p1">评论量：999</p>
+	<p class="p1">收藏量：888</p>
+	<a class="a1" href="#">评论</a>
+	<a class="a1" href=#>收藏</a>
+	<p class="p1">name的评论：xxxxxxxxx</p>
+</div> -->
+
+<!-- <div id="div1">
+	<p class="p1">mutual_id</p>
+	<p class="p1">用户名</p>
+	<img src="../static/images/banner01.jpg" alt="">
+	<img src="../static/images/banner02.jpg" alt="">
+	<img src="../static/images/banner03.jpg" alt="">
+	<img src="../static/images/banner04.jpg" alt="">
+	<img src="../static/images/banner05.jpg" alt="">
+	<p class="p1">评论量：999</p>
+	<p class="p1">收藏量：888</p>
+	<a class="a1" href="#">评论</a>
+	<a class="a1" href=#>收藏</a>
+	<p class="p1">name的评论：xxxxxxxxx</p>
+</div> -->
+
+<!-- <div id="div1">
+		<p class="p1">mutual_id</p>
+		<p class="p1">用户名</p>
+		<p class="p1">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias, repellendus quibusdam. Veniam aliquam soluta, aperiam minus illum ullam natus rerum blanditiis corrupti voluptas ipsam ipsum placeat, quia cumque, facilis quisquam!
+	
+		</p>
+		<p class="p1">评论量：999</p>
+		<p class="p1">收藏量：888</p>
+		<a class="a1" href="#">评论</a>
+		<a class="a1" href=#>收藏</a>
+		<p class="p1">name的评论：xxxxxxxxx</p>
+</div> -->
+
+
+	<div class="footer">
+		<div class="foot_link">
+			<a href="#">关于我们</a>
+			<span>|</span>
+			<a href="#">联系我们</a>
+			<span>|</span>
+			<a href="#">招聘人才</a>
+			<span>|</span>
+			<a href="#">友情链接</a>
+		</div>
+		<p>CopyRight © 2016 北京爱宠有限公司 All Rights Reserved</p>
+		<p>电话：010-****888    京ICP备*******8号</p>
+	</div>
+
+<script>
+<!--	<script type="text/javascript" src="/static/js/slideshow.js">-->
+<!--	<script type="text/javascript">-->
+<!--		BCSlideshow('focuspic');-->
+<!--		var oFruit = document.getElementById('fruit_more');-->
+<!--		var oShownum = document.getElementById('show_count');-->
+
+<!--		var hasorder = localStorage.getItem('order_finish');-->
+
+<!--		if(hasorder)-->
+<!--		{-->
+<!--			oShownum.innerHTML = '2';-->
+<!--		}-->
+
+<!--		oFruit.onclick = function(){-->
+<!--			window.location.href = 'list.html';-->
+<!--		}-->
+
+$(function(){
+		var token=window.localStorage.getItem('mall_token');
+		var user=window.localStorage.getItem('mall_user');
+		$('.login_btn').prepend('<a href="#">'+user+'</a>');
+		$.ajax({
+		type:'get',
+		url:'http://127.0.0.1:8000/blog/list',
+		//data:JSON.stringify(post_data),
+		dataType:'json',
+		contentType:'application/json',
+		beforeSend: function(request) {
+					request.setRequestHeader("Authorization",token);
+				},
+		success:function(res){
+			if(res.code==200){
+				alert('获取信息成功');
+				console.log(res.data);
+				//var xxx='<a href="#">'+res.username+'</a>';
+				//$('.login_btn').prepend(xxx);
+				$.each(res.data,function(index,obj){
+					//设置height的属性值
+					//如果只有文字
+					//如果只有图片
+					//有文字也有图片
+<!--					if(obj.image_one){-->
+<!--						$('#div1').css('height','300px');-->
+<!--					}-->
+<!--					else{-->
+<!--						$('#div1').css('height','200px');-->
+<!--					}-->
+					//拼接数据
+					var html='<div id="div1">';
+					html+='<input class=p1 type="hidden" value="'+obj.blog_id+'">';
+					//html+='<p class="p1">'+obj.blog_id+'</p>';
+					html+='<p class="p1">'+obj.blog_created_time+'</p>';
+					html+='<p class="p1">'+obj.blog_user+'</p>';
+					if(obj.blog_image_one){
+						//设置height的属性值
+						//$('#div1').css('height','300px');
+						html+='<img src="http://127.0.0.1:8000/media/'+obj.blog_image_one+'" alt="">';
+					}
+					if(obj.blog_image_two){
+						html+='<img src="http://127.0.0.1:8000/media/'+obj.blog_image_two+'" alt="">';
+					}
+					if(obj.blog_image_three){
+						html+='<img src="http://127.0.0.1:8000/media/'+obj.blog_image_three+'" alt="">';
+					}
+					if(obj.blog_image_four){
+						html+='<img src="http://127.0.0.1:8000/media/'+obj.blog_image_four+'" alt="">';
+					}
+					if(obj.blog_image_five){
+						html+='<img src="http://127.0.0.1:8000/media/'+obj.blog_image_five+'" alt="">';
+					}					
+					if(obj.blog_content){
+						html+='<p class="p1">'+obj.blog_content+'</p>';
+					}
+					html+='<p class="p1">评论量：'+obj.comment_num+'</p>';
+					html+='<p class="p1">收藏量：'+obj.collection_num+'</p>';
+
+
+
+					//对多条评论进行遍历，写到页面
+					if(obj.comment){
+							$.each(obj.comment,function(index1,obj1){
+							//console.log(index1,obj1);
+							if(obj1.to_name){
+								html+='<div class="c1"><input class=c2 type="hidden" value="'+obj1.id+'">';
+								html+='<p class="p2">'+obj1.self_name+'@'+obj1.to_name+'&nbsp的回复:'+'&nbsp&nbsp&nbsp&nbsp'+obj1.content+'&nbsp&nbsp&nbsp&nbsp'+obj1.created_time+'&nbsp&nbsp&nbsp&nbsp'+'</p>';
+								html+='<input id="restore" class=a1 type="submit" value="回复"></div>';
+							}
+							else{
+								html+='<div class="c1"><input class=c2 type="hidden" value="'+obj1.id+'">';
+								html+='<p class="p2">'+obj1.self_name+'@&nbsp的评论:'+'&nbsp&nbsp&nbsp&nbsp'+obj1.content+'&nbsp&nbsp&nbsp&nbsp'+obj1.created_time+'&nbsp&nbsp&nbsp&nbsp'+'</p>';
+								html+='<input id="restore" class=a1 type="submit" value="回复"></div>';
+							}
+
+
+						})
+					}
+
+
+
+
+
+					//html+='<a href="/comment/'+user+'/'+obj.id+'">评论</a>'
+					//html+='<a href="/collection/'+user+'/'+obj.id+'">收藏</a>'
+
+					html+='<input class=a1 type="submit" value="收藏">';
+					html+='<input class=a1 type="submit" value="评论">';
+					html+='</div>';
+					//获取页面元素，在之后添加拼接的数据
+					$('.navbar_con').after(html);
+
+
+					//收藏评论功能
+					$('#div1').on('click','.a1',function(){
+						var a1=$(this).val();
+						var user=window.localStorage.getItem('mall_user');
+						//var b_id=$(this).siblings('input:first').val();
+						var token=window.localStorage.getItem('mall_token');
+						if(a1=="收藏"){
+							//alert("收藏"+b_id);
+							var b_id=$(this).siblings('input:first').val();
+							var get_url_collection = 'http://127.0.0.1:8000/blog/collection/'+user+'/'+b_id;
+							console.log(b_id,get_url_collection);
+							$.ajax({
+								type:'post',
+								url: get_url_collection,
+								//data:JSON.stringify(post_data),
+								dataType:'json',
+								contentType:'application/json',
+								beforeSend: function(request) {
+											request.setRequestHeader("Authorization",token);
+										},
+								success:function(res){
+									if(res.code==200){
+										alert('收藏成功');
+										//console.log(res.data);
+										window.location.href='/listall';
+									}
+									else{
+										alert(res.error);
+									}
+								}
+							})
+						}
+						else if(a1=="评论"){
+							$(".reply_textarea").remove();
+							$(this).parent().append("<div class='reply_textarea'><textarea class='comment' name='' cols='50' rows='3'></textarea><br/><input class='put' type='submit' value='发表' /></div>");
+
+							$('.put').click(function(){
+								var b_id=$(this).parent().siblings('input:first').val();
+								var get_url_comment = 'http://127.0.0.1:8000/blog/comment/'+user+'/'+b_id;
+								var comment=$('.comment').val();
+								var post_data={"comment":comment}
+								//alert(b_id);
+								console.log(comment,b_id,user,token,get_url_comment);
+								console.log(post_data);
+								$.ajax({
+									type:'post',
+									url: get_url_comment,
+									data:JSON.stringify(post_data),
+									dataType:'json',
+									contentType:'application/json',
+									beforeSend: function(request) {
+											request.setRequestHeader("Authorization",token);
+										},
+									success:function(res){
+										if(res.code==200){
+											alert('评论成功')
+											window.location.href='/listall';
+										}
+										else{
+											alert(res.error);
+										}
+									}
+								})
+							})
+						}
+						else{
+							//alert(111);
+							$(".reply_textarea").remove();
+							$(this).parent().append("<div class='reply_textarea'><textarea class='comment' name='' cols='50' rows='3'></textarea><br/><input class='put1' type='submit' value='发表' /></div>");
+
+							$('.put1').click(function(){
+								//alert(222);
+								var c_id=$(this).parent().siblings('input:first').val();
+								var b_id=$(this).parent().parent().siblings('input:first').val();
+								//var b_name=$(this).parent().parent().siblings('p:eq(1)').text();
+								var c_name=$(this).parent().siblings('p:eq(0)').text().split('@')[0];
+								var local_user=window.localStorage.getItem('mall_user');
+								//alert(c_id);
+								console.log(c_name);
+								console.log(c_id,b_id,c_name,local_user);
+
+								if(c_name==local_user){
+									alert('亲！该回复是你发的，不要自己给自己回复了，有事去评论吧')
+								}
+								else{
+									var get_url_restore = 'http://127.0.0.1:8000/blog/restore/'+user+'/'+b_id+'/'+c_id;
+									var restore=$('.comment').val();
+									var post_data={"restore":restore}
+									//console.log(restore,b_id,c_id,user,token,get_url_restore);
+									//console.log(post_data);
+									$.ajax({
+										type:'post',
+										url: get_url_restore,
+										data:JSON.stringify(post_data),
+										dataType:'json',
+										contentType:'application/json',
+										beforeSend: function(request) {
+												request.setRequestHeader("Authorization",token);
+											},
+										success:function(res){
+											if(res.code==200){
+												alert('回复成功')
+												window.location.href='/listall';
+											}
+											else{
+												alert(res.error);
+											}
+										}
+
+									})
+								}
+
+							})
+
+						}
+
+					})
+
+
+				})
+			}
+			else{
+				alert(res.error);
+			}
+		}
+	})
+})
+
+</script>
+</body>
+</html>

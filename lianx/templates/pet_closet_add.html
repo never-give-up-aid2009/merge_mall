@@ -1,0 +1,169 @@
+<!doctype html>
+<html>
+<!--<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">-->
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>宠物衣服添加页</title>
+	<link rel="stylesheet" type="text/css" href="../static/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="../static/css/main.css">
+	<script type="text/javascript" src="../static/js/jquery-1.12.4.min.js"></script>
+	<script type="text/javascript" src="../static/js/jquery.form.min.js"></script>
+</head>
+
+
+<body>
+	<div class="header_con">
+		<div class="header">
+			<div class="welcome fl">欢迎来到爱宠商城!</div>
+			<div class="fr">
+				<div class="login_btn fl">
+
+					欢迎您：<em>asdfg</em>
+					<span>|</span>
+					<a href="/logout/">退出</a>
+
+				</div>
+				<div class="user_link fl">
+					<span>|</span>
+					<a href="/info/">用户中心</a>
+					<span>|</span>
+					<a href="/cart/">我的购物车</a>
+					<span>|</span>
+					<a href="/order/">我的订单</a>
+				</div>
+			</div>
+		</div>
+		<div id="weather" style="position:absolute;left:250px;margin-top:-32px;">
+			<h1 id="region" style="display=inline-block">西安</h1>
+			<h1 id="tep" style="display=inline-block">15℃/-3℃</h1>
+		</div>
+	</div>
+
+
+<div  style="height:80%;border: 1px solid black;width:100%
+;margin-top:10px;background-image:url('../static/images/fruit.jpg');
+position:relative;overflow:hidden">
+	<div  style="position:absolute; border: 1px solid black;left:10%;
+width:300px;height=300px;top:15%;">
+		<h1 style="font-size:20px;overflow:hidden"><b>待上传照片</b></h1>
+		<label><img style="display:block"  width="100%" id="avatar-img" src="/static/images/login_banner.png" alt=""></label>
+	</div>
+
+
+
+	<div style="position:absolute; border: 1px solid black; width:25%;
+top:10%;left:40%;z-index:10;background:white;height:70%">
+		    <a href="/pet_closet_list" style="font-size:20px;position:absolute;left:35%;top:-10%">返回衣服列表</a>
+			<h1 style='margin-top:3px'><b>添加宠物衣服</b></h1>
+			<hr>
+
+			<form method="post" enctype="multipart/form-data" id="test_form" style="margin-top:10px;font-size:15px" action="http://127.0.0.1:8000/v1/up_clothes/add">
+
+				<p>
+					衣服名称：<input style='padding:3px' type="text" name='cloth_name' />
+				</p>
+				<br>
+				<p>
+				适用季节：
+						<input name="season" type="radio" value="春季">春季
+						<input name="season" type="radio" value="夏季">夏季
+						<input name="season" type="radio" value="秋季">秋季
+						<input name="season" type="radio" value="冬季">冬季
+				</p>
+				<br>
+				<p>
+				款式：	<input name="style" type="radio" value="棉衣">棉衣
+						<input name="style" type="radio" value="背心">背心
+						<input name="style" type="radio" value="四脚衣">四脚衣
+						<input name="style" type="radio" value="半身">半身
+				</p>
+				<br>
+				<p>
+				功能：   <input name="function" type="radio" value="保暖">保暖
+					    <input name="function" type="radio" value="防雨">防雨
+					    <input name="function" type="radio" value="透气">透气
+				</p>
+				<br>
+				<p>
+				选择衣服照片: <input type="file"  id='id_avatar' name="avatar"/>
+				</p>
+				<br>
+				<textarea rows="5" cols="20" name="remark"></textarea>
+				<br>
+				<p>
+<!--						<input style='margin:5px;width=20%' type="submit" value="添加" >-->
+						<button style='margin:5px;width=20%' type="submit">提交</button>
+				</p>
+
+			</form>
+	</div>
+</div >
+
+<div class="footer">
+		<div class="foot_link">
+			<a href="#">关于我们</a>
+			<span>|</span>
+			<a href="#">联系我们</a>
+			<span>|</span>
+			<a href="#">招聘人才</a>
+			<span>|</span>
+			<a href="#">友情链接</a>
+		</div>
+		<p>CopyRight © 2016 北京爱宠有限公司 All Rights Reserved</p>
+		<p>电话：010-****888    京ICP备*******8号</p>
+	</div>
+</body>
+
+
+<script type="">
+
+	$("#id_avatar").change(function () {
+        // 1. 创建一个读取文件的对象
+        var fileReader = new FileReader();
+        // 取到当前选中的头像文件
+        // console.log(this.files[0]);
+        // 读取你选中的那个文件
+        fileReader.readAsDataURL(this.files[0]);  // 读取文件是需要时间的
+        fileReader.onload = function () {
+            // 2. 等上一步读完文件之后才 把图片加载到img标签中
+            $("#avatar-img").attr("src", fileReader.result);
+        };
+    });
+
+    $(function(){
+    		$.ajax({
+			"type":"get",
+			"url": "http://127.0.0.1:8000/v1/weather/bzx",
+			"dataType": "json",
+			 success:function (result) {
+                      if (200 == result.code){
+<!--                          alert("发布成功")-->
+                          console.log(result.data.region)
+                          var region=result.data.region
+                           $('#region').html(region)
+                          var weather=result.data.weather
+                           $('#tep').html(weather)
+
+                      }else{
+                          alert(result.error)
+                      }
+                   }
+                })
+
+           $("#test_form").ajaxForm(function(result) {
+            if (result.code == 200){
+            	alert(result.msg)
+            	window.location.href='/pet_closet_list';
+            } else {
+                alert('上传失败');
+            } });
+
+   		})
+
+
+</script>
+
+</html>
+
+
+

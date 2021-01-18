@@ -1,0 +1,300 @@
+<!--<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">-->
+<!--<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">-->
+
+<!doctype html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>爱宠-分享页</title>
+	<link rel="stylesheet" type="text/css" href="/static/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/main.css">
+	<script type="text/javascript" src="/static/js/jquery-1.12.4.min.js"></script>
+<!--	<script type="text/javascript">-->
+
+<!--		$(function(){-->
+<!--			if($('.login_btn').text().indexOf('欢迎') >= 0){-->
+<!--				$.get('/cart/count_judge/', function (data){-->
+<!--					$('#show_count').text(data.count);-->
+<!--				});-->
+<!--			}-->
+<!--		})-->
+
+<!--	</script>-->
+
+	<script type="text/javascript" src="/static/js/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/static/js/slide.js"></script>
+	<style>
+		#div1{
+			width: 90%;
+			height: 95%;
+			background-color:#eee;
+			margin: 10px auto;
+			position: relative;
+		}
+		#img1{
+			width:200px;
+			height:80px;
+		}
+		#content{
+			width: 50%;
+			height: 35%;
+			background-color:#aaa;
+			/* margin: 10px auto; */
+			position: absolute;
+			left: 30%;
+			top: 5%;
+			font-size:25px;
+		}
+		#upload_image{
+			width: 25%;
+			height: 10%;
+			background-color:#aaa;
+			/* margin: 10px auto; */
+			position: absolute;
+			left: 30%;
+			top: 45%;
+			font-size:25px;
+		}
+		#btn{
+			width: 10%;
+			height: 5%;
+			background-color:#aaa;
+			/* margin: 10px auto; */
+			position: absolute;
+			left: 30%;
+			top: 65%;
+			font-size:25px;
+		}
+		#div1>p{
+			width: 19%;
+			height: 5%;
+			background-color:#aaa;
+			/* margin: 10px auto; */
+			position: absolute;
+			left: 30%;
+			top: 56%;
+			font-size:25px;
+		}
+	</style>
+</head>
+<body>
+	<div class="header_con">
+		<div class="header">
+			<div class="welcome fl">欢迎来到爱宠商城!</div>
+			<div class="fr">
+				<div class="login_btn fl">
+
+<!--					欢迎您：<em>asdfg</em>-->
+<!--					<span>|</span>-->
+<!--					<a href="#">{{ user }}</a>-->
+					<a href="/logout/">退出</a>
+
+				</div>
+				<div class="user_link fl">
+					<span>|</span>
+					<a href="/info/">用户中心</a>
+					<span>|</span>
+					<a href="/cart/">我的购物车</a>
+					<span>|</span>
+					<a href="/order/">我的订单</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="search_bar clearfix">
+		<a href="/index" class="logo fl"><img id="img1" src="/static/images/logo.png"></a>
+		<div class="search_con fl">
+			<form role="search" method="get" id="searchform" action="/search/">
+				<input type="text" class="input_text fl" name="q" placeholder="搜索商品" requeired="">
+				<button type="summit" class="input_btn fr">搜索</button>
+			</form>
+		</div>
+		<div class="guest_cart fr">
+			<a href="/cart/" class="cart_name fl">我的购物车</a>
+			<div class="goods_count fl" id="show_count">0</div>
+		</div>
+	</div>
+
+
+	<div class="navbar_con">
+		<div class="navbar">
+			<h1 class="fl">全部商品分类</h1>
+			<ul class="navlist fl">
+				<li><a href="/">首页</a></li>
+				<li class="interval">|</li>
+				<li><a href="#">问卷调查</a></li>
+				<li class="interval">|</li>
+				<li><a href="#">抽奖</a></li>
+			</ul>
+		</div>
+	</div>
+
+	<div id="div1">
+<!--		<p>-->
+			<textarea name="content" id="content" cols="30" rows="10" placeholder="内容:最多100个"></textarea>
+<!--		</p>-->
+<!--		<p>-->
+			<input id="upload_image" type="file" name="upload_image"  multiple="multiple" accept="image/*" placeholder="上传图片:最多5张图片">
+			<p>上传图片:最多5张图片</p>
+<!--		</p>-->
+<!--		<p>-->
+			<input id="btn" type="submit" value="上传" onclick="put()">
+<!--		</p>-->
+	</div>
+
+	<div class="footer">
+		<div class="foot_link">
+			<a href="#">关于我们</a>
+			<span>|</span>
+			<a href="#">联系我们</a>
+			<span>|</span>
+			<a href="#">招聘人才</a>
+			<span>|</span>
+			<a href="#">友情链接</a>
+		</div>
+		<p>CopyRight © 2016 北京爱宠有限公司 All Rights Reserved</p>
+		<p>电话：010-****888    京ICP备*******8号</p>
+	</div>
+
+<script>
+<!--	<script type="text/javascript" src="/static/js/slideshow.js">-->
+<!--	<script type="text/javascript">-->
+<!--		BCSlideshow('focuspic');-->
+<!--		var oFruit = document.getElementById('fruit_more');-->
+<!--		var oShownum = document.getElementById('show_count');-->
+
+<!--		var hasorder = localStorage.getItem('order_finish');-->
+
+<!--		if(hasorder)-->
+<!--		{-->
+<!--			oShownum.innerHTML = '2';-->
+<!--		}-->
+
+<!--		oFruit.onclick = function(){-->
+<!--			window.location.href = 'list.html';-->
+<!--		}-->
+<!--function put1(){-->
+<!--	var content=$('#content').val();-->
+<!--	var token=window.localStorage.getItem('mall_token');-->
+<!--	//var file_list = $("#upload_image")[0].files[0];-->
+<!--	var post_data={"content":content};-->
+<!--	console.log(content,token);-->
+<!--	$.ajax({-->
+<!--		type:'post',-->
+<!--		url:'http://127.0.0.1:8000/blog/release/1',-->
+<!--		data:JSON.stringify(post_data),-->
+<!--		dataType:'json',-->
+<!--		contentType:'application/json',-->
+<!--		beforeSend: function(request) {-->
+<!--                request.setRequestHeader("Authorization",token);-->
+<!--            },-->
+<!--		success:function(res){-->
+<!--			if(res.code==200){-->
+<!--				alert('提交信息成功');-->
+<!--			}else{-->
+<!--				alert(res.error);-->
+<!--			}-->
+<!--		}-->
+<!--	})-->
+<!--}-->
+$(function(){
+	var user=window.localStorage.getItem('mall_user');
+	$('.login_btn').prepend('<a href="#">'+user+'</a>');
+})
+
+function put(){
+	//获取输入信息
+	var token=window.localStorage.getItem('mall_token');
+	var user=window.localStorage.getItem('mall_user');
+	//$('.login_btn').prepend('<a href="#">'+user+'</a>');
+	var content=$('#content').val();
+	var file_list = $("#upload_image")[0].files;
+	formdata = new FormData();
+	$.each(file_list,function(index,obj){
+		formdata.append(index,obj);
+	})
+	formdata.append("content",content);
+	//前端打印信息验证
+   	//console.log(content);
+   	//console.log(token);
+   	//console.log(file_list);
+   	//console.log(formdata);
+   	//分情况讨论
+   	if(content&&file_list.length>0&&file_list.length<6){
+   		//alert('有文本也有图片');
+			$.ajax({
+			processData: false,
+			contentType: false,
+			url:'http://127.0.0.1:8000/blog/release/1',
+			type:'post',
+			data:formdata,
+			beforeSend: function(request) {
+					request.setRequestHeader("Authorization",token);
+				},
+			success:function(res){
+				if(res.code==200){
+					alert('提交成功');
+					window.location.href='/listall';
+				}
+				else{
+					alert(res.error);
+				}
+			}
+		})
+   	}
+   	else if(content&&file_list.length==0){
+   		//alert('只有文本');
+   			$.ajax({
+			processData: false,
+			contentType: false,
+			url:'http://127.0.0.1:8000/blog/release/2',
+			type:'post',
+			data:formdata,
+			beforeSend: function(request) {
+					request.setRequestHeader("Authorization",token);
+				},
+			success:function(res){
+				if(res.code==200){
+					alert('提交成功');
+					window.location.href='/listall';
+				}
+				else{
+					alert(res.error);
+				}
+			}
+		})
+   	}
+   	else if(file_list.length>0&&file_list.length<6){
+   		//alert('只有图片');
+			$.ajax({
+			processData: false,
+			contentType: false,
+			url:'http://127.0.0.1:8000/blog/release/3',
+			type:'post',
+			data:formdata,
+			beforeSend: function(request) {
+					request.setRequestHeader("Authorization",token);
+				},
+			success:function(res){
+				if(res.code==200){
+					alert('提交成功');
+					window.location.href='/listall';
+				}
+				else{
+					alert(res.error);
+				}
+			}
+		})
+   	}
+   	else if(file_list.length>5){
+   		alert('图片数量超过5张，请重新选择');
+   	}
+   	else{
+   		alert('没有内容，请输入或者选择');
+   	}
+}
+
+</script>
+</body>
+</html>

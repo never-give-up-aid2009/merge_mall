@@ -1,0 +1,276 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"><head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>爱宠超市-提交订单</title>
+	<link rel="stylesheet" type="text/css" href="/static/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/main.css">
+	<script type="text/javascript" src="/static/js/jquery-1.12.4.min.js"></script>
+
+</head>
+<body >
+	<div class="header_con">
+		<div class="header">
+			<div class="welcome fl">欢迎来到爱宠商城!</div>
+			<div class="fr">
+				<div class="login_btn fl">
+					欢迎您：<em></em>
+					<span>|</span>
+					<a href="/logout/">退出</a>
+				</div>
+				<div class="user_link fl">
+					<span>|</span>
+					<a href="/info/">用户中心</a>
+					<span>|</span>
+					<a href="/cart/">我的购物车</a>
+					<span>|</span>
+					<a href="/order/">我的订单</a>
+				</div>
+			</div>
+		</div>		
+	</div>
+
+	<div class="search_bar clearfix">
+		<a href="/" class="logo fl"><img src="/static/images/logo.png"></a>
+		<div class="sub_page_name fl">|&nbsp;&nbsp;&nbsp;&nbsp;提交订单</div>
+		<div class="search_con fr">
+			<input type="text" class="input_text fl" name="" placeholder="搜索商品">
+			<input type="button" class="input_btn fr" name="" value="搜索">
+		</div>		
+	</div>
+	
+	<h3 class="common_title">确认收货地址</h3>
+
+	<div class="common_list_con clearfix">
+		<dl>
+			<dt>寄送到：</dt>
+
+<!--			<dd><div class="site_con">-->
+<!--					<form>-->
+<!--						<input type="hidden" name="csrfmiddlewaretoken" value="EAJtjihzbFMHIPAdDr1PazNWSMyO4gy0pJNoSWbIlWIb0B00CYu9EtQ2cpoY9Svo">-->
+<!--						<div  id="man"   class="form_group">-->
+<!--							<label>收件人：</label>-->
+<!--							<input type="text" name="r_man">-->
+<!--						</div>-->
+<!--						<div id="address" class="form_group form_group2">-->
+<!--							<label>详细地址：</label>-->
+<!--							<textarea class="site_area" name="address"></textarea>-->
+<!--						</div>-->
+<!--						<div id="youbian" class="form_group">-->
+<!--							<label>邮编：</label>-->
+<!--							<input type="text" name="mnumber">-->
+<!--						</div>-->
+<!--						<div id="phone" class="form_group">-->
+<!--							<label>手机：</label>-->
+<!--							<input type="text" name="pnumber">-->
+<!--						</div>-->
+
+<!--						<input type="submit" value="确定" class="info_submit">-->
+<!--					</form>-->
+<!--				</div></dd>-->
+<!--			<dd>请输入地址<input id="address" name="" checked=""></dd>-->
+			<dd id="address">请输入地址<input  name="" checked="" id="pro">省<input  name="" checked="" id="city">市<input  name="" checked="" id="area">区<input  name="" checked="" id="addre"></dd>
+
+		</dl>
+<!--		<a href="/site" class="edit_site">编辑收货地址</a>-->
+
+	</div>
+	
+	<h3 class="common_title">支付方式</h3>	
+	<div class="common_list_con clearfix">
+		<div class="pay_style_con clearfix">
+<!--			<input type="radio" name="pay_style" checked="">-->
+<!--			<label class="cash">货到付款</label>-->
+<!--			<input type="radio" name="pay_style">-->
+<!--			<label class="weixin">微信支付</label>-->
+<!--			<input type="radio" name="pay_style">-->
+			<label class="zhifubao"></label>
+<!--			<input type="radio" name="pay_style">-->
+<!--			<label class="bank">银行卡支付</label>-->
+		</div>
+	</div>
+
+	<h3 class="common_title">商品列表</h3>
+	
+	<div class="common_list_con clearfix">
+		<ul class="goods_list_th clearfix">
+			<li class="col01">商品编号</li>
+			<li class="col02">商品名称</li>
+			<li class="col03">商品价格</li>
+			<li class="col04">数量</li>
+			<li class="col05">小计</li>
+		</ul>
+		<ul class="goods_list_td clearfix">
+			<li id="id005" class="col01 number">1</li>
+<!--			<li class="col02"><img src="/static/{{ each.product.product_img }}"></li>-->
+			<li id ="id001" class="col03"></li>
+			<li id ="id002" class="col04"></li>
+			<li id ="id003" class="col05"></li>
+			<li id ="id004" class="col06">1</li>
+			<li id="id006" class="col06"></li>
+		</ul>
+	</div>
+
+	<h3 class="common_title">金额结算</h3>
+
+	<div class="common_list_con clearfix">
+		<div class="settle_con">
+			<div class="total_goods_count">金额<b id="total_price">0</b>元</div>
+			<div class="transit">运费：<b>10</b>元</div>
+			<div class="total_pay">实付款：<b id="total_pay">10</b>元</div>
+		</div>
+	</div>
+
+	<div class="order_submit clearfix">
+		<a href="javascript:;" id="order_btn">提交订单</a>
+	</div>	
+
+	<div class="footer">
+		<div class="foot_link">
+			<a href="#">关于我们</a>
+			<span>|</span>
+			<a href="#">联系我们</a>
+			<span>|</span>
+			<a href="#">招聘人才</a>
+			<span>|</span>
+			<a href="#">友情链接</a>		
+		</div>
+		<p>CopyRight © 2016 北京爱宠有限公司 All Rights Reserved</p>
+		<p>电话：010-****888    京ICP备*******8号</p>
+	</div>
+
+	<script type="text/javascript" src="/static/js/jquery-1.12.4.min.js"></script>
+<script>
+
+
+
+
+
+
+//$(function(){
+<!--	var url = document.location.toString();-->
+<!--    var arrUrl = url.split("//");-->
+<!--    var id = arrUrl[1].split('/')[2];-->
+
+
+//		var id=window.localStorage.getItem('id');
+//		var token=window.localStorage.getItem('mall_token');
+//		var user=window.localStorage.getItem('mall_user');
+//		$.ajax({
+//			processData: false,
+//			contentType: false,
+//			url:'http://127.0.0.1:8000/order/'+p_id',
+//			type:'post',
+//			data:'json',
+//			beforeSend: function(request) {
+//					request.setRequestHeader("Authorization",token);
+//				},
+			//success:function(data){
+			//	if(res.code==200){
+			//	var id=$('#id001').text();
+			//	var name=$('#id002').text();
+			//	var price=$('#id003').text();
+			//	var count=$('#id004').text();
+			//	id=data['id']
+			//	name=data['name']
+			//	price=data['price']
+			//	count=data['count']
+			//	var sum=price*count;
+				//console.log(price,count,sum);
+				//console.log($('#total_price'));
+			//	$('#id006').html(sum);
+			//	$('#total_price').html(sum);
+			//	var pay=sum+10
+			//	$('#total_pay').html(pay)
+			//	var id=$('#id005').text();
+			//	var total_pay=$('#total_pay').text();
+		//		post_data = {"order_id": id,'payall':total_pay}
+		//		}
+
+		//	}
+	//	})
+   	//})
+
+<!--		var price=$('#id003').text();-->
+<!--		var count=$('#id004').text();-->
+<!--		var sum=price*count;-->
+<!--		console.log(sum)-->
+<!--		$('#id006').html(sum);-->
+<!--		$('#total_price').html(sum);-->
+<!--		var pay=sum+10-->
+<!--		$('#total_pay').html(pay)-->
+<!--		var total_pay=$('#total_pay').text();-->
+<!--		post_data = {"order_id": count,'payall':total_pay}-->
+<!--		console.log(post_data)-->
+
+$(function (){
+
+	var url = document.location.toString();
+	var arrUrl = url.split("//");
+	var id = arrUrl[1].split('/')[2];
+	//var token=window.localStorage.getItem('mall_token');
+	console.log('id',id)
+
+	$.ajax({
+
+			url:'http://127.0.0.1:8000/payment/place_order/'+id,
+			type:'get',
+			success:function(res){
+				if(res.code==200){
+						console.log(1111)
+
+						var id=res.data['id']
+						var name=res.data['name']
+						console.log(name)
+						var price=res.data['price']
+
+						$('#id001').html(id);
+						$('#id002').html(name);
+						$('#id003').html(price);
+
+						var sum=price;
+						$('#id006').html(sum);
+						$('#total_price').html(sum);
+						var pay=sum+10;
+						$('#total_pay').html(pay)
+						var total_pay=$('#total_pay').text();
+						post_data = {"order_id": id,'payall':total_pay};
+				}
+
+			}
+
+	})
+
+
+
+
+
+	$('#order_btn').click(function () {
+			var pro=$('#pro').val()
+			var city=$('#city').val()
+			var area=$('#area').val()
+			var addre=$('#addre').val()
+			var address=pro+city+area+addre
+			if(address){
+				  $.ajax({
+						url:"http://127.0.0.1:8000/payment/jump/",
+						type:"post",
+						contentType: "application/json",
+						dataType:"json",
+						data: JSON.stringify(post_data),
+						success:function (data) {
+						window.location = data.pay_url;console.log(data) },
+						})
+						}else{alert('地址不能为空')}
+
+
+
+
+	})
+
+
+})
+
+</script>
+<!---->
+</body>
+</html>

@@ -1,0 +1,369 @@
+/* 首页样式文件 */
+/* 初始化样式 */
+h1,h2,h3,p,body,ul,li{
+  padding: 0;
+  margin: 0;
+}
+ul{
+  list-style: none;
+}
+a{
+  text-decoration: none;/*去下划线*/
+}
+img{
+  display: block;
+}
+body{
+  background-color: #f2f2f0;
+  /* font-size: 16px;
+  font-family: monospace; */
+  font: 16px monospace;
+}
+
+/***************header*******************/
+header{
+  position: fixed;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  height: 80px;
+  background-color: #555;
+}
+
+nav{
+  /* 控制内容位置 */
+  width: 1140px;
+  height: 80px;
+  /* border: 5px solid red; */
+  margin: 0 auto;
+  /* 文字垂直方向居中 */
+  line-height: 80px;
+}
+/* 14:52~15:07 */
+/* logo 字体大小26px  字体颜色#c1edf2  浮动排列 */
+.logo{
+  font-size: 26px;
+  float: left;
+}
+.logo>a{
+  color: #c1edf2;
+}
+/* 导航列表 ul */
+/* ul  浮动排列 距离h1 80px */
+/* li  浮动 使用margin调整li之间的距离 */
+/* li a 字体颜色#e5f2f2 鼠标移入时变成白色 */
+nav>ul{
+  /* border: 1px solid red; */
+  float: left;
+  margin-left:80px;
+}
+nav>ul>li{
+  float: left;
+  margin: 0 20px;
+}
+nav>ul>li>a{
+  color: #e5f2f2;
+}
+nav>ul>li>a:hover{
+  color: #fff;
+}
+/* 登录注册 */
+/* 文本颜色#e5f2f2  右浮动 注册紧贴在nav右侧  登录距离右侧远一些 */
+#login,#register{
+  float: right;
+  color: #e5f2f2;
+}
+#login{
+  margin-right: 50px;
+}
+
+
+
+/*******************main**********************/
+main{
+  width: 1140px;
+  /* height: 500px;
+  border: 5px solid red; */
+  margin: 100px auto 0;
+}
+/* 轮播图 */
+.banner{
+  width: 66%;
+  float: left;
+}
+.fader{
+  /* 为后代元素做参照物 */
+  position: relative;
+}
+.slide img{
+  width: 100%;
+  height: 100%;
+}
+/* 16:50~17:05 */
+/* 图片上的文字 */
+/* 绝对定位 定位到 fader下方 距离下方12% */
+/* 字体大小26px 白色字体  半透明黑色背景 背景宽度和图片宽度一致 */
+/* 调整文字距离 距离左侧边框40px */
+.imginfo{
+  position: absolute;
+  bottom: 12%;
+  /* right: 0;
+  left: 0; */
+  font-size: 26px;
+  color: #fff;
+  background-color: rgba(0,0,0,0.5);
+  padding:5px 0 5px 40px;
+  width: 100%; 
+  /* 默认情况下 元素实际大小为 内容+内边距+边框+外边距 */
+  /* box-sizing: content-box; */
+  /* width/height指包含边框在内的大小 */
+  /* 宽高包含内容+内边距+边框 */
+  /* 实际大小为 宽高+外边距 */
+  box-sizing: border-box;
+}
+
+/* 左右箭头 */
+/* 相对fader做绝对定位 调整字体大小80px 加粗 宽度50px 
+高80px 文字水平垂直居中 文字颜色白色  
+让左右箭头定位到图片垂直居中的位置 调整左右的位置  */
+.prev,.next{
+  position: absolute;
+  top: 50%;
+  margin-top: -40px;
+  width: 50px;
+  height: 80px;
+  font-size: 80px;
+  /* font-weight: bold; */
+  color: #fff;
+  text-align: center;
+  line-height: 80px;
+  transition: all 0.5s;
+  /* 隐藏 */
+  opacity: 0;
+}
+.prev{
+  left: 50px;
+}
+.next{
+  right: 50px;
+}
+/* 鼠标移入时 修改左右箭头样式 */
+.fader:hover .prev{
+  opacity: 0.8;
+  left: 0;
+}
+.fader:hover .next{
+  opacity: 0.8;
+  right: 0;
+}
+/* 09:53~10:10 */
+/* 轮播图页标(小圆点) */
+/* 页标父元素 .pager_list  
+绝对定位 定位到.fader的下方0px 宽度100% 高度40px
+内容水平居中垂直居中
+*/
+.pager_list{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 40px;
+  /* border: 1px solid red; */
+  text-align: center;
+  line-height: 40px;
+}
+/* li  
+ 将li变成行内块 宽高15px 圆形 背景颜色半透明的白色
+  带有.active的li或鼠标移入时的li背景颜色不透明
+*/
+.pager_list li{
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  background-color: rgba(255,255,255,0.5);
+  border-radius: 50%;
+  margin: 0 5px;
+}
+.pager_list li:hover,li.active{
+  /* opacity: 1; */
+  background-color: rgba(255,255,255,1);
+}
+
+
+
+
+
+
+
+/**************toppic*****************/
+.toppic{
+  width: 32%;
+  float: right;
+  /* border: 5px solid red; */
+}
+.toppic li{
+  /* 为后代元素做参照物 */
+  position: relative;
+  width: 100%;
+  background-color: #000;
+}
+.toppic li img{
+  width: 100%;
+  height: 250px;
+}
+/* 图片上的文字 */
+/* div 绝对定位 定位在li下方 宽度占100%
+ 调整文字和边框的距离 半透明的深黑色背景 白色字体 */
+.toppic div{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 10px 0 10px 20px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  box-sizing: border-box;
+}
+
+/* span 绝对定位 定位在li左上方 距离左上20px
+  半透明深黑色背景 字体颜色白色  水平垂直居中 字体大小12px
+  边框圆角2px
+*/
+.toppic span{
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  font-size: 12px;
+  padding: 5px 10px;
+  border-radius: 4px;
+}
+
+/* 最后一个子元素li */
+.toppic li:last-child{
+  margin-top:23px; 
+}
+
+
+/* toppic li 鼠标移入时变亮效果
+思路：将li的背景颜色改为黑色 
+然后将li中的图片变成半透明效果 透出黑色背景图片变暗
+当鼠标移入li将图片变成不透明
+*/
+.toppic li img{
+  opacity: 0.7;
+  transition: all 0.3s;
+}
+.toppic li:hover img{
+  opacity: 1;
+}
+
+.clear{
+  clear: both;
+}
+/*************blogs*****************/
+/* 10:55~11:10 */
+.blogsbox{
+  width: 100%;
+  /* height: 500px;
+  border: 5px solid red; */
+  margin-top:20px;
+}
+/* 每一条博客 背景颜色#fff 距离下边的其他博客20px
+  内容和边框距离20px
+*/
+.blogs{
+  background-color: #fff;
+  margin-bottom: 20px;
+  padding: 20px;
+  /* 内部元素可能会用到浮动布局 */
+  overflow: hidden;
+}
+/* 博客标题 */
+/* 字体大小20px 字体颜色#555 
+鼠标移动到字体上时颜色变为#337ab7 */
+.blogtitle a{
+  font-size: 20px;
+  color: #555;
+}
+.blogtitle a:hover{
+  color:#337ab7;
+}
+/* 博客图片 */
+/*.blogpic 宽30% 高170px 浮动布局 
+调整距离标题和右侧内容的位置 */
+/* img 宽高和父元素一致 */
+.blogpic{
+  width: 30%;
+  height: 170px;
+  float: left;
+  margin: 10px 20px 0 0;
+  /* 图片鼠标移入后放大 超出父元素部分不可见 */
+  overflow: hidden;
+}
+.blogpic img{
+  width: 100%;
+  height: 100%;
+  transition: all 0.5s;
+}
+.blogpic img:hover{
+  /* 缩放 按照倍数调整大小 */
+  transform: scale(1.1);
+}
+
+/* 文本 */
+.blogtext{
+  color:#566573;
+  margin-top: 20px;
+}
+/* 信息列表 */
+/* 让li水平排列 调整距离 */
+/* 文字大小12px 文字颜色#748594 
+鼠标移入到超链接时文字变成黑色 */
+
+/* 通过images/auicon.jpg
+将小图标作为背景图在页面显示 */
+.blogs li{
+  height: 18px;
+  line-height: 18px;
+  float: left;
+  font-size: 12px;
+  margin: 30px 15px 0 0;
+  background-image: url('../images/auicon.jpg');
+  background-repeat: no-repeat;
+  /* 让文字右移 露出背景图片 */
+  padding-left: 18px;
+}
+.blogs li a{
+  color: #748594;
+}
+.blogs li a:hover{
+  color: #000;
+}
+/* 调整背景图片的位置 让每一个li显示不同的图标 */
+.lmname{
+  background-position-y: -24px;
+}
+.timer{
+  background-position-y: -46px;
+}
+.view{
+  background-position-y: -66px;
+}
+.like{
+  background-position-y: -87px;
+}
+/* 15:06~15:20 */
+/****************footer****************/
+footer{
+  width: 100%;
+  background-color: #555;
+  color: #a5a4a4;
+  text-align: center;
+  padding: 20px 0;
+}
+footer a{
+  color: #a5a4a4;
+}
+footer a:hover{
+  color: #c1edf2;
+}

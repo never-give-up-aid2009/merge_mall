@@ -1,0 +1,99 @@
+<!--Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>搜索</title>
+<!-- custom-theme -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Pet Adoption Form  Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+		function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- //custom-theme -->
+<link href="../static/css/stylesearch.css" rel="stylesheet" type="text/css" media="all" />
+
+</head>
+<body class="bacimage">
+		<script src="../static/js/jquery-1.11.3.js"></script>
+    <!-- <h1 class="agile_head text-center">Pet Adoption Form</h1> -->
+    <div  style="margin-top: 100px;float:left;margin-left: 500px;"  class="w3layouts_main wrap agile_form" >
+
+		<div class="search">
+			<div>
+				<img src="../static/images/img1.jpg" alt="" style="margin-left: 70px;width:462px;height:292px;" id="img11">
+			</div>
+			<div class="li" style="margin-left: 70px;">
+				<span>宠物种类：</span>
+				<label id="kind"></label>
+				<span style="margin-left: 80px;">宠物年龄：</span>
+				<label id="age"></label>
+
+			</div>
+			<div class="li" style="margin-left: 70px;">
+					<span>宠物性别：</span>
+					<label id="sex"></label>
+					<span style="margin-left: 129px;">所在城市：</span>
+					<label id="city"></label>
+
+				</div>
+
+				<div class="li" style="margin-left: 70px;">
+					    <span id="way"></span>
+						<span style="color: red;margin-left: 10px;" id="price"></span>
+				</div>
+			    <div style="margin-left: 70px;margin-right:100px;" id="desc">
+				</div>
+			</div>
+			<input id="btn11" type="submit" onclick="search()" value="购买"" style="margin-top: 50px;margin-left: 50px;">
+			<div class="clear"></div>
+
+	</div>
+
+	<script>
+	$(function(){
+
+    var url = document.location.toString();
+    var arrUrl = url.split("//");
+    var id = arrUrl[1].split('/')[1];
+
+    var username=id
+    $.ajax({
+			  url:"http://127.0.0.1:8000/v1/product/" + username+"/detail"+ "?" + 'id=' + id,
+              type:'get',
+              success:function(res){
+                  if(res.code==200){
+                  	var products=res.data.products;
+                  	var c_img = products[0].c_img;
+                  	var kind = products[0].kind;
+                  	var age = products[0].age +'个月';
+                  	var sex = products[0].sex;
+                  	var city = products[0].address;
+                  	var way = products[0].way;
+                  	var id = products[0].id;
+                  	var price = '￥'+products[0].price;
+                  	var desc = products[0].describe;
+                  	$('#img11').attr('src',c_img)
+                  	$('#kind').html(kind)
+                    $('#age').html(age)
+                    $('#sex').html(sex)
+                    $('#city').html(city)
+                    $('#way').html(way)
+                    $('#price').html(price)
+                    $('#desc').html(desc)
+
+                  }
+              }  })
+
+
+    $('#btn11').click(function(){
+		window.location.href='/place_order/'+id;
+    })
+
+
+    })
+	</script>
+</body>
+</html>

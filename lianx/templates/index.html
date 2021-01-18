@@ -1,0 +1,269 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>爱宠-首页</title>
+	<link rel="stylesheet" type="text/css" href="/static/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/main.css">
+	<script type="text/javascript" src="/static/js/jquery-1.12.4.min.js"></script>
+<!--	<script type="text/javascript">-->
+
+<!--	<script>-->
+<!--		$(function(){-->
+<!--			if($('.login_btn').text().indexOf('欢迎') >= 0){-->
+<!--				$.get('/cart/count_judge/', function (data){-->
+<!--					$('#show_count').text(data.count);-->
+<!--				});-->
+<!--			}-->
+<!--		})-->
+
+<!--	</script>-->
+	
+	<script type="text/javascript" src="/static/js/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/static/js/slide.js"></script>
+	<style>
+		#img1{
+			width:200px;
+			height:80px;
+		}
+	</style>
+</head>
+<body>
+	<div class="header_con">
+		<div class="header">
+			<div class="welcome fl">欢迎来到爱宠商城!</div>
+			<div class="fr">
+				<div class="login_btn fl">
+					
+<!--					欢迎您：<em>asdfg</em>-->
+<!--					<span>|</span>-->
+					<a href="/login/">登录</a>
+					<a href="/login/">退出</a>
+					
+				</div>
+				<div class="user_link fl">
+					<span>|</span>
+					<a href="/info/">用户中心</a>
+<!--					<span>|</span>-->
+<!--					<a href="/cart/">我的购物车</a>-->
+					<span>|</span>
+					<a href="/order/">我的订单</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="search_bar clearfix">
+		<a href="/" class="logo fl"><img id="img1" src="../static/images/logo.png"></a>
+<!--		<div class="search_con fl">-->
+<!--&lt;!&ndash;			<form role="search" method="get" id="searchform" action="/search/">&ndash;&gt;-->
+<!--&lt;!&ndash;				<input type="text" class="input_text fl" name="q" placeholder="搜索商品" requeired="">&ndash;&gt;-->
+<!--&lt;!&ndash;				<button type="summit" class="input_btn fr">搜索</button>&ndash;&gt;-->
+<!--&lt;!&ndash;			</form>&ndash;&gt;-->
+<!--		</div>-->
+<!--		<div class="guest_cart fr">-->
+<!--			<a href="/cart/" class="cart_name fl">我的购物车</a>-->
+<!--			<div class="goods_count fl" id="show_count">0</div>-->
+<!--		</div>-->
+	</div>
+
+	
+
+	<div class="navbar_con">
+		<div class="navbar">
+			<h1 class="fl">全部分类</h1>
+			<ul class="navlist fl">
+				<li><a href="index">首页</a></li>
+				<li class="interval">|</li>
+				<li><a href="#" id="sc">我的商城</a></li>
+				<li class="interval">|</li>
+				<li><a href="#" id="up">我的上传</a></li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="center_con clearfix">
+		<ul class="subnav fl">
+			<li><a href="#model01" class="fruit">我的推荐</a></li>
+			<li><a href="#model02" class="seafood">精彩分享</a></li>
+			<li><a href="#model03" class="meet">萌宠秀秀</a></li>
+			<li><a id="a11" class="egg">宠物商城</a></li>
+<!--			<li><a href="#model05" class="vegetables">爱宠小贴上</a></li>-->
+			<li><a href="#model06" class="ice">宠物衣橱</a></li>
+		</ul>
+		<div class="slide fl">
+			<ul class="slide_pics">
+				<li style="left: -760px;"><img src="../static/images/slide.jpg" alt="幻灯片"></li>
+				<li style="left: -760px;"><img src="../static/images/slide02.jpg" alt="幻灯片"></li>
+				<li style="left: 0px;"><img src="../static/images/slide03.jpg" alt="幻灯片"></li>
+				<li style="left: -760px;"><img src="../static/images/slide04.jpg" alt="幻灯片"></li>
+			</ul>
+			<div class="prev"></div>
+			<div class="next"></div>
+			<ul class="points"><li class=""></li><li class=""></li><li class="active"></li><li class=""></li></ul>
+		</div>
+		<div class="adv fl">
+			<a href="#"><img src="../static/images/adv01.jpg"></a>
+			<a href="#"><img src="../static/images/adv02.jpg"></a>
+		</div>
+	</div>
+
+	<div class="list_model">
+		<div class="list_title clearfix">
+			<h3 class="fl" id="model01">我的推荐</h3>
+			<div class="subtitle fl">
+				<span>|</span>
+				
+			</div>
+			<a href="/listuser" class="goods_more fr" id="fruit_more">查看更多 &gt;</a>
+		</div>
+
+		<div class="goods_con clearfix">
+			<div class="goods_banner fl"><img src="../static/images/banner01.jpg"></div>
+			<ul class="goods_list fl">
+				
+			</ul>
+		</div>
+	</div>
+
+	<div class="list_model">
+		<div class="list_title clearfix">
+			
+			<h3 class="fl" id="model02">精彩分享</h3><div class="subtitle fl">
+				<span>|</span>
+				
+			</div>
+			<a href="/release" class="goods_more fr">查看更多 &gt;</a>
+		</div>
+
+		<div class="goods_con clearfix">
+			<div class="goods_banner fl"><img src="../static/images/banner02.jpg"></div>
+			<ul class="goods_list fl">
+				
+			</ul>
+		</div>
+	</div>
+
+	<div class="list_model">
+		<div class="list_title clearfix">
+			<h3 class="fl" id="model03">萌宠秀秀</h3>
+			<div class="subtitle fl">
+				<span>|</span>
+				
+			</div>
+			<a href="/list" class="goods_more fr">查看更多 &gt;</a>
+		</div>
+
+		<div class="goods_con clearfix">
+			<div class="goods_banner fl"><img src="../static/images/banner03.jpg"></div>
+			<ul class="goods_list fl">
+				
+			</ul>
+		</div>
+	</div>
+
+	<div class="list_model">
+		<div class="list_title clearfix">
+			<h3 class="fl" id="model04">宠物商城</h3>
+			<div class="subtitle fl">
+				<span>|</span>
+				
+			</div>
+			<a href="/list4_1_1/" class="goods_more fr">查看更多 &gt;</a>
+		</div>
+
+		<div class="goods_con clearfix">
+			<div class="goods_banner fl"><img src="../static/images/banner04.jpg"></div>
+			<ul class="goods_list fl">
+				
+			</ul>
+		</div>
+	</div>
+
+<!--	<div class="list_model">-->
+<!--		<div class="list_title clearfix">-->
+<!--			<h3 class="fl" id="model05">爱宠商城</h3>-->
+<!--			<div class="subtitle fl">-->
+<!--				<span>|</span>-->
+<!--				-->
+<!--			</div>-->
+<!--			<a href="/list5_1_1/" class="goods_more fr">查看更多 &gt;</a>-->
+<!--		</div>-->
+
+<!--		<div class="goods_con clearfix">-->
+<!--			<div class="goods_banner fl"><img src="../static/images/banner05.jpg"></div>-->
+<!--			<ul class="goods_list fl">-->
+<!--				-->
+<!--			</ul>-->
+<!--		</div>-->
+<!--	</div>-->
+
+	<div class="list_model">
+		<div class="list_title clearfix">
+			<h3 class="fl" id="model06">宠物衣橱</h3>
+			<div class="subtitle fl">
+				<span>|</span>
+				
+			</div>
+			<a href="/pet_closet_list" class="goods_more fr">查看更多 &gt;</a>
+		</div>
+
+		<div class="goods_con clearfix">
+			<div class="goods_banner fl"><img src="../static/images/banner06.jpg"></div>
+			<ul class="goods_list fl">
+				
+			</ul>
+		</div>
+	</div>
+
+
+
+	<div class="footer">
+		<div class="foot_link">
+			<a href="#">关于我们</a>
+			<span>|</span>
+			<a href="#">联系我们</a>
+			<span>|</span>
+			<a href="#">招聘人才</a>
+			<span>|</span>
+			<a href="#">友情链接</a>
+		</div>
+		<p>CopyRight © 2016 北京爱宠有限公司 All Rights Reserved</p>
+		<p>电话：010-****888    京ICP备*******8号</p>
+	</div>
+
+    
+<!--	<script type="text/javascript" src="../static/js/slideshow.js"></script>-->
+<!--	<script type="text/javascript">-->
+<!--		BCSlideshow('focuspic');-->
+<!--		var oFruit = document.getElementById('fruit_more');-->
+<!--		var oShownum = document.getElementById('show_count');-->
+
+<!--		var hasorder = localStorage.getItem('order_finish');-->
+
+<!--		if(hasorder)-->
+<!--		{-->
+<!--			oShownum.innerHTML = '2';-->
+<!--		}-->
+
+<!--		oFruit.onclick = function(){-->
+<!--			window.location.href = 'list.html';-->
+<!--		}-->
+<!--	</script>-->
+<script>
+$(function(){
+	var username= window.localStorage.getItem('mall_user');
+	console.log(username)
+	var x= '/'+username+'/search';
+	$('#a11').attr('href',x);
+
+	$('#sc').attr('href',x);
+
+	var x1= '/'+username+'/upload';
+	$('#up').attr('href',x1);
+
+})
+
+</script>
+
+</body></html>

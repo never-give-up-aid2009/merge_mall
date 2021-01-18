@@ -1,0 +1,157 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>用户登录</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/main.css">
+    <script type="text/javascript" src="../static/js/jquery-1.12.4.min.js"></script>
+
+    <!--<script>-->
+    <!--	$(function(){-->
+    <!--	var error_username;-->
+
+    <!--	$('.name_input').blur(function() {-->
+    <!--		check_user_name();-->
+    <!--	});-->
+
+    <!--	function check_user_name(){-->
+    <!--        $.get('/user/login_judge/?user_name='+$('.name_input').val(), function (data) {-->
+    <!--            if(data.count==0)-->
+    <!--            {-->
+    <!--                $('.user_error').text('用户名不存在，请前往注册').show();-->
+    <!--                error_username = true;-->
+    <!--            }-->
+    <!--            else-->
+    <!--            {-->
+    <!--            	$('.user_error').hide();-->
+    <!--            	error_username = false;-->
+    <!--            }-->
+    <!--        });-->
+    <!--	}-->
+
+    <!--	if (0==1){-->
+    <!--		$('.pwd_error').text('密码错误').show()-->
+    <!--	}-->
+
+    <!--	$('form').submit(function() {-->
+    <!--		check_user_name();-->
+
+    <!--		if (error_username)-->
+    <!--		{-->
+    <!--			return false;-->
+    <!--		}-->
+
+    <!--	});-->
+
+    <!--	})-->
+    <!--</script>-->
+<style>
+<!--    .rock{-->
+<!--      animation:linear rotation 3s infinite;-->
+<!--    }-->
+<!--    @keyframes rotation{-->
+<!--       from {-->
+<!--         transform:rotateZ(0);-->
+<!--        }-->
+<!--        to{-->
+<!--         transform:rotateZ(360deg);-->
+<!--        }-->
+<!--    }-->
+<!--    	 .login_logo{-->
+<!--		 animation: linear 3s move alternate infinite;-->
+<!--    }-->
+<!--	@keyframes move {-->
+<!--		from{-->
+<!--			transform: translateX(0)-->
+<!--		}-->
+<!--		to{-->
+<!--		   transform: translateX(500px)-->
+<!--		}-->
+<!--	}-->
+</style>
+</head>
+<body>
+
+<div class="login_top clearfix">
+    <a href="index.html" class="login_logo"><img class="rock" src="../static/images/logo02.png"></a>
+</div>
+
+<div class="login_form_bg">
+    <div class="login_form_wrap clearfix">
+        <div class="login_banner fl"></div>
+        <div class="slogan fl">日夜兼程 · 爱心送达</div>
+        <div class="login_form fr">
+            <div class="login_title clearfix">
+                <h1>用户登录</h1>
+                <a href="/register/">立即注册</a>
+            </div>
+            <div class="form_input">
+                <input type="hidden" name="csrfmiddlewaretoken"
+                       value="6MtgCIRZRjq0Kmwzrt23eWdKpgTF6vcPRVxbbmL81Amu28Wmq0vnIQgQJTJPb79d">
+                <input type="text" name="username" class="username" value="" placeholder="请输入用户名">
+                <div class="user_error">输入错误</div>
+                <input type="password" name="pwd" class="pwd" value="" placeholder="请输入密码">
+                <div class="pwd_error">输入错误</div>
+                <div class="more_input clearfix">
+                    <input type="checkbox" name="remember" value="1" checked="checked">
+                    <label>记住用户名</label>
+                    <a href="/forget/">忘记密码</a>
+                </div>
+                <input type="button" onclick="login()" value="登录">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="footer no-mp">
+    <div class="foot_link">
+        <a href="#">关于我们</a>
+        <span>|</span>
+        <a href="#">联系我们</a>
+        <span>|</span>
+        <a href="#">招聘人才</a>
+        <span>|</span>
+        <a href="#">友情链接</a>
+    </div>
+    <p>CopyRight © 2016 北京爱宠有限公司 All Rights Reserved</p>
+    <p>电话：010-****888 京ICP备*******8号</p>
+</div>
+
+
+</body>
+
+<script>
+	function login(){
+		var username = $('.username').val();
+		var pwd = $('.pwd').val();
+		//将获取到的username和pwd进行封装
+		var post_data = {'username':username,'pwd':pwd};
+		// 打印检查，确保前边步骤正确
+		console.log(post_data);
+		$.ajax({
+			url:'http://127.0.0.1:8000/v1/btoken',
+			type:'POST',
+			dataType:'json',
+			data:JSON.stringify(post_data),
+			//前段给后端提交的
+			contentType:'application/json',
+			success:function(res){
+				if(res.code==200){
+					alert('登陆成功！');
+					console.log(res.data)
+					window.localStorage.setItem('mall_token',res.data.token);
+
+					window.localStorage.setItem('mall_user',res.username);
+					window.location.href = '/index/';
+				}else{
+					alert(res.error);
+				}
+			}
+		})
+	}
+
+</script>
+</html>

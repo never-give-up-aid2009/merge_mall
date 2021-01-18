@@ -1,0 +1,95 @@
+<!--Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>搜索</title>
+<!-- custom-theme -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Pet Adoption Form  Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+		function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- //custom-theme -->
+<link href="../static/css/stylesearch.css" rel="stylesheet" type="text/css" media="all" />
+
+</head>
+<body class="backi">
+		<script src="../static/js/jquery-1.11.3.js"></script>
+    <!-- <h1 class="agile_head text-center">Pet Adoption Form</h1> -->
+    <div  style="margin-top: 100px;"  class="w3layouts_main wrap agile_form" >
+	  <h2 style="margin-bottom: 130px;">What kind of Pets do you like</h2>
+		<div class="search">
+			<div class="li">
+				<span>狗：</span>
+				<label><input type="checkbox" class="dog" name="dog" value="泰迪犬">泰迪犬</label>
+				<label><input type="checkbox" class="dog" name="dog" value="哈士奇">哈士奇</label>
+				<label><input type="checkbox" class="dog" name="dog" value="金毛犬">金毛犬</label>
+				<label><input type="checkbox" class="dog" name="dog" value="柯基犬">柯基犬</label>
+
+			</div>
+			<div class="li">
+					<span>猫：</span>
+					<label><input type="checkbox" class="cat" name="cat" value="加菲猫">加菲猫</label>
+					<label><input type="checkbox" class="cat" name="cat" value="波斯猫">波斯猫</label>
+					<label><input type="checkbox" class="cat" name="cat" value="狸花猫">狸花猫</label>
+					<label><input type="checkbox" class="cat" name="cat" value="无毛猫">无毛猫</label>
+
+				</div>
+
+				<div class="li">
+						<span>你更喜欢：</span>
+						<input type="radio" name="select2" value="领养" checked=True>领养
+						<input type="radio" name="select2" value='售卖'>购买
+
+				</div>
+			</div>
+			<input type="submit" onclick="search()" value="搜索" style="margin-top: 50px;margin-left: 50px;">
+			<div class="clear"></div>
+
+	</div>
+
+	<script>
+	var url = document.location.toString();
+    var arrUrl = url.split("//");
+    var username = arrUrl[1].split('/')[1];
+    function search(){
+    var info=''
+    var way = $("input[name='select2']:checked").val();
+    info=way
+    obj = document.getElementsByName("dog");
+	for(k in obj){
+		if(obj[k].checked)
+			info=info+','+obj[k].value
+	}
+	objc = document.getElementsByName("cat");
+	for(k in objc){
+		if(objc[k].checked)
+			info=info+','+objc[k].value
+	}
+
+    var post_data={'info':info}
+    console.log(post_data)
+    $.ajax({
+             type:'post',
+             contentType:"application/json",
+             dataType:"json",
+             url:"http://127.0.0.1:8000/v1/product/" + username+"/search",
+             data:JSON.stringify(post_data),
+             success: function(arg) {
+             if (arg.code == 200) {
+             	var url1="http://127.0.0.1:5000/"+username+'/list';
+             	window.location.href = url1
+             }
+             }
+             })
+
+
+
+
+    }
+	</script>
+</body>
+</html>

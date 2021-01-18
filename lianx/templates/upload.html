@@ -1,0 +1,203 @@
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>商品上传</title>
+		<link href="../static/css/styleup.css" rel='stylesheet' type='text/css' />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="shortcut icon" type="image/x-icon" href="../static/images/fav-icon.png" />
+		<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+		</script>
+		<!----webfonts---->
+	
+		<!----//webfonts---->
+		<!---start-click-drop-down-menu----->
+		<script src="../static/js/jquery-1.12.4.min.js"></script>
+        <!----start-dropdown--->
+         <script type="text/javascript">
+		
+		</script>
+        <!----//End-dropdown--->
+	</head>
+	<body>
+		<!---start-wrap---->
+			<!---start-header---->
+			<div class="header">
+				<div class="wrap">
+				<div class="logo">
+					<a href="index.html"><img src="../static/images/logo11.png" title="pinbal" /></a>
+				</div>
+				<div class="clear"> </div>
+			</div>
+		</div>
+		<!---//End-header---->
+		<!---start-content---->
+		<div class="content">
+			<div class="wrap">
+				<div class="contact-info">
+					<div class="map" style="width: 100%;height: 430px;">
+						 <img id="sc" width="40%" height="350" style="background-size:100% 100%;padding-left: 400px" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="../static/images/没上传.jpeg">
+						 <br><br>
+						 <input type="file" id="c_img" style="padding-left: 550px">
+						<button onclick="upload2()">上传</button>
+						<br>
+						 <!-- <small><a href="" style="color:#666;text-align:left;font-size:12px"></a></small> -->
+						 
+						</div>
+						<div style="padding-bottom: 10px">
+						<div style="padding-left: 120px; display: inline;" class="dogs">
+								<span>狗：</span>
+				                <label><input type="radio" name="dog" value="泰迪犬" class="dog">泰迪犬</label>
+				               <label><input type="radio" name="dog" value="哈士奇" class="dog">哈士奇</label>
+				              <label><input type="radio" name="dog" value="金毛犬" class="dog">金毛犬</label>
+				              <label><input type="radio" name="dog" value="柯基犬" class="dog">柯基犬</label>
+							  <label><input type="radio" name="dog" value="不选" id="dognot">不选</label>
+						</div>
+						<div style="padding-left: 120px;display: inline;" class="cats">
+								<span>猫：</span>
+				                <label><input type="radio" name="cat" value="加菲猫" class="cat">加菲猫</label>
+				               <label><input type="radio" name="cat" value="波斯猫" class="cat">波斯猫</label>
+				              <label><input type="radio" name="cat" value="狸花猫" class="cat">狸花猫</label>
+				              <label><input type="radio" name="cat" value="无毛猫" class="cat">无毛猫</label>
+							  <label><input type="radio" name="cat" value="不选" id="catnot">不选</label>
+						</div>
+					</div>
+
+					<div style="padding-bottom: 10px;padding-left: 120px">
+						 宠物性别：<input type="radio" name="sex" value="公">公
+						 <input type="radio" name="sex" value="母">母
+					</div>
+					<div style="padding-bottom: 10px;padding-left: 120px">
+							你更希望：<input type="radio" name="way" value="售卖">售卖
+							<input type="radio" name="way" value="领养">领养
+					   </div>
+
+						<div style="padding-left: 120px">
+							<div class="myinput1">年龄： <input type="text" placeholder="宠物几个月" class="myinput" id="age"></div>
+							<div class="myinput1">价格： <input type="number" placeholder="如果领养价格请输入0" class="myinput" id="price"></div>
+							<div class="myinput1">地址： <input type="text" placeholder="您所在城市" class="myinput" id="city"></div>
+                        </div>
+
+						
+				
+						<div class="contact-form">
+								<div class="text2" style="padding-left: 120px;">
+								   <textarea id="desc" style="height:100px" value="Message:" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Message';}">描述..</textarea>
+								</div>
+<!--							   <span><input type="button" onclick="submit1()" value="Submit" style="margin-left: 120px"></span>-->
+							 <button id="btn" onclick="submit1()" style="margin-left: 120px">提交</button>
+						                <div class="clear"></div>
+						               </div>
+								</div>
+			</div>
+		</div>
+		<!---//End-wrap---->
+		<script>
+			$(document).ready(function(){
+  				$(".dog").click(function(){
+     				 $('.cats').hide()
+  						});
+   				$("#dognot").click(function(){
+      				$('.cats').show()
+  						});
+   				$(".cat").click(function(){
+      				$('.dogs').hide()
+  						});
+   				$("#catnot").click(function(){
+      				$('.dogs').show()
+  					   });
+            });
+
+		</script>
+		<script>
+		    //////////////////
+		    token = window.localStorage.getItem('mall_token');
+            username = window.localStorage.getItem('mall_user');
+            /*var url = document.location.toString();
+            var arrUrl = url.split("//");
+            var username = arrUrl[1].split('/')[1];*/
+			function upload2(){
+			var url="http://127.0.0.1:8000/v1/product/" + username+"/uploadimg";
+			formdata = new FormData();
+            formdata.append("c_img",$("#c_img")[0].files[0]);
+				 $.ajax({
+            processData: false,
+            contentType: false,
+            url: url,
+            type: 'post',
+            data: formdata,
+            /* beforeSend: function(request) {
+                request.setRequestHeader("Authorization", token);
+            }, */
+            success: function(arg) {
+	            if (arg.code == 200) {
+		            alert('成功！')
+		            var path='http://127.0.0.1:8000/media/'+arg.c_img
+			        $("#sc").attr('src',path)
+
+	            } else {
+		            alert('失败！')
+                    }
+                }
+            })
+
+			};
+
+			function submit1(){
+
+				var dog = $("input[name='dog']:checked").val();
+                var cat = $("input[name='cat']:checked").val();
+                var sex = $("input[name='sex']:checked").val();
+                var way = $("input[name='way']:checked").val();
+                var age = $("#age").val();
+                var price = $("#price").val();
+                var city = $("#city").val();
+                var describe = $("#desc").val();
+                var c_img=$("#sc").attr('src');
+                if (dog){var kind=dog}else{var kind=cat}
+                var post_data={'kind':kind,'sex':sex,'way':way,'age':age,'price':price,'city':city,'describe':describe,'c_img':c_img};
+                console.log(post_data)
+                console.log(username)
+                if (dog=="不选" && cat=="不选"){alert("狗、猫的品种必选二选一!")}else{
+                if (sex && way && age && price && city && c_img){
+                $.ajax({
+                	type:'post',
+               		contentType:"application/json",
+                    dataType:"json",
+                    url:"http://127.0.0.1:8000/v1/product/" + username+"/upload",
+                    data:JSON.stringify(post_data),
+                    success: function(arg) {
+	            if (arg.code == 200) {
+		            alert('上传成功！')
+                    window.location.reload()
+	            } else {
+		            alert('上传失败！')
+                    }
+                }
+
+                })
+                }else{alert('除了“描述”外，其他内容都必须填写')}}
+			}
+		</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	</body>
+</html>
+

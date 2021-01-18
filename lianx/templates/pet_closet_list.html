@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>宠物衣服列表页</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/main.css">
+    <script type="text/javascript" src="../static/js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="../static/js/jquery.form.min.js"></script>
+    <script>
+<!--        function update3(){-->
+<!--            var cloth_name = $('.sign').val();-->
+<!--            console.log(cloth_name);-->
+<!--        }-->
+    </script>
+</head>
+<body>
+<div class="header_con">
+    <div class="header">
+        <div class="welcome fl">欢迎来到爱宠商城!</div>
+        <div class="fr">
+            <div class="login_btn fl">
+
+                欢迎您：<em>asdfg</em>
+                <span>|</span>
+                <a href="/logout/">退出</a>
+
+            </div>
+            <div class="user_link fl">
+                <span>|</span>
+                <a href="/info/">用户中心</a>
+                <span>|</span>
+                <a href="/cart/">我的购物车</a>
+                <span>|</span>
+                <a href="/order/">我的订单</a>
+            </div>
+        </div>
+    </div>
+    <div id="weather" style="position:absolute;left:250px;margin-top:-32px;">
+        <h1 id="region" style="display=inline-block">西安</h1>
+        <h1 id="tep" style="display=inline-block">15℃/-3℃</h1>
+    </div>
+</div>
+
+
+<div style="height:80%;border: 1px solid black;width:100%
+;margin-top:10px;
+position:relative;overflow:hidden">
+    <div class="wangid_conbox" style="">
+        <!-- 当前位置 -->
+        <!-- 筛选 -->
+        <div class="shuaix" align="center">
+            <div class="right">
+                <input type="text" placeholder="请输关键字查询" class="name">
+                <input class="chazhao" type="submit" value="查询"
+                       style="width: 100px;height: 30px;background-color: white;cursor: pointer;font-size:20px">
+
+                <a class='search' href="/pet_closet_add" style="font-size:20px">添加</a>
+            </div>
+        </div>
+        <!-- 内容 -->
+        <div align="center" style="overflow:auto;width: 80%;height:400px;position:absolute;left:110px">
+            <table class="layui-table" lay-filter="mylist" lay-size="lg" align="center"
+                   style="font-size:20px;overflow:auto">
+                <thead>
+                <tr class="tr1">
+                    <th lay-data="{type:'checkbox',fixed:'left'}"></th>
+                    <th lay-data="{field:'dep_name', align:'center',width:100}">序号</th>
+                    <th lay-data="{field:'cloth_name',align:'center', minWidth:600}">衣服名称</th>
+                    <!--            <th lay-data="{field:'avatar',align:'center',minWidth:130}">图片</th>-->
+                    <th lay-data="{field:'season',align:'center',minWidth:130}">季节</th>
+                    <th lay-data="{field:'style',align:'center',minWidth:130}">款式</th>
+                    <th lay-data="{field:'function',align:'center',minWidth:130}">功能</th>
+                    <th lay-data="{field:'remark',align:'center',minWidth:130}">备注</th>
+                    <th lay-data="{field:'created_time',align:'center',minWidth:130}">上传时间</th>
+                    <th lay-data="{field:'name',align:'center', minWidth:170}">操作</th>
+
+                </tr>
+                </thead>
+
+                <tbody class="biaoqian">
+                <tbody class="123">
+                <table class="456">
+                </table>
+                </tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="footer">
+    <div class="foot_link">
+        <a href="#">关于我们</a>
+        <span>|</span>
+        <a href="#">联系我们</a>
+        <span>|</span>
+        <a href="#">招聘人才</a>
+        <span>|</span>
+        <a href="#">友情链接</a>
+    </div>
+    <p>CopyRight © 2016 北京爱宠有限公司 All Rights Reserved</p>
+    <p>电话：010-****888 京ICP备*******8号</p>
+</div>
+</body>
+
+
+<script type="text/javascript">
+	var url="http://127.0.0.1:8000/v1/pet_closet/list"
+	$(function(){
+   		var html_value="";
+
+		$.ajax({
+			type:"get",
+			url:url,
+			dataType:'json',
+			contentType:'application/json',
+			success:function(res){
+				if (200 == res.code){
+					var data=res.obj;
+					for(var i=0;i<data.length;i++){
+			    	var id =i+1;
+					var uid=data[i].id
+					var cloth_name =data[i].cloth_name;
+					var season =data[i].season;
+					var style =data[i].style;
+					var function1 =data[i].function;
+					var remark =data[i].remark;
+					var created_time =data[i].created_time;
+
+					html_value+=' <tr>';
+					html_value+='<td></td>';
+					html_value+='<td>'+ id+' </td>';
+					html_value+='<td>';
+					html_value+='<a href="/notice?id='+ uid + '">';
+					html_value+=cloth_name;
+					html_value+='</a>';
+					html_value+='</td>';
+					html_value+='<td>'+ season+' </td>';
+					html_value+='<td>'+ style+' </td>';
+					html_value+='<td>'+ function1+' </td>';
+					html_value+='<td>'+ remark+' </td>';
+					html_value+='<td>'+ created_time+' </td>';
+					html_value+='<td>';
+<!--					html_value+='<a href="/javascript:update('+uid+')">修改</a>';-->
+<!--					html_value+='<a href="javescript:update('+uid+')" >修改</a>';-->
+					html_value+='<a href="javascript:update('+uid+')">修改</a>';
+					html_value+='<a href="javascript:show('+uid+')">删除</a>';
+<!--					html_value+='<a href="javascript:http://127.0.0.1:8000/v1/up_clothes/del?id=uid">删除</a>'-->
+					html_value+='</td>';
+					html_value+='</tr>';
+					$(".123").html(html_value);
+			        }
+		        }
+	        }
+	     })
+
+	     $.ajax({
+			"type":"get",
+			"url": "http://127.0.0.1:8000/v1/weather/bzx",
+			"dataType": "json",
+			 success:function (result) {
+                      if (200 == result.code){
+<!--                          alert("发布成功")-->
+                          console.log(result.data.region)
+                          var region=result.data.region
+                           $('#region').html(region)
+                          var weather=result.data.weather
+                           $('#tep').html(weather)
+
+                      }else{
+                          alert(result.error);
+
+                      }
+                   }
+                })
+
+
+		})
+
+		$('.chazhao').click(function(){
+			var a=$('.123');
+			a.remove();
+			var html_value2="";
+			var name=$('.name').val();
+            name_data={'name':name};
+            $.ajax({
+				type:"POST",
+                  url:url,
+                  dataType:'json',
+                  data:JSON.stringify(name_data),
+                  contentType:'application/json',
+                  success:function(res){
+                  		if(200 == res.code){
+                  			var data=res.obj;
+                  			for(var i=0;i<data.length;i++){
+							var id =i+1;
+							var uid=data[i].id
+							var cloth_name =data[i].cloth_name;
+							var season =data[i].season;
+							var style =data[i].style;
+							var function1 =data[i].function;
+							var remark =data[i].remark;
+							var created_time =data[i].created_time;
+
+							html_value2+='<tr>';
+							html_value2+='<td></td>';
+							html_value2+='<td>'+ id+' </td>';
+							html_value2+='<td>';
+							html_value2+='<a href="/notice?id='+ uid + '">';
+							html_value2+=cloth_name;
+							html_value2+='</a>';
+							html_value2+='</td>';
+							html_value2+='<td>'+ season+' </td>';
+							html_value2+='<td>'+ style+' </td>';
+							html_value2+='<td>'+ function1+' </td>';
+							html_value2+='<td>'+ remark+' </td>';
+							html_value2+='<td>'+ created_time+' </td>';
+							html_value2+='<td>';
+							html_value2+='<a href="javascript:update('+uid+')">修改</a>';
+							html_value2+='<a href="javascript:show('+uid+')">删除</a>'
+							html_value2+='</td>';
+							html_value2+='</tr>';
+							$(".biaoqian").html(html_value2);}
+								}else{
+								 alert(res.error)
+								 window.location.href='/pet_closet_list';
+                  		}
+                  }
+            	})
+			})
+
+		function show(data){
+           alert("是否删除？")
+           var _id=data;
+           console.log(_id);
+           var _uid={"id":_id}
+           var _url="http://127.0.0.1:8000/v1/up_clothes/del"
+            //console.log(_id);
+             $.ajax({
+                  type:"POST",
+                  url:_url,
+                  dataType:'json',
+                  data:JSON.stringify(_uid),
+                  contentType:'application/json',
+                  "success":function(result){
+                  if (200 == result.code){
+                  alert('删除成功！');
+                  window.location.href='/pet_closet_list';
+                  }else{
+                  alert('删除失败！');
+                  window.location.href='/pet_closet_list';
+                  }
+                  }
+                  })
+                  }
+
+
+
+
+
+        function update(data){
+          		 	var a=$('.biaoqian');
+					a.remove();
+					var b=$('.123');
+					b.remove();
+					var c=$('.search');
+					c.remove();
+					var d=$('.chazhao');
+					d.remove();
+					var e=$('.tr1');
+					e.remove();
+					var f=$('.name');
+					f.remove();
+					var html_value3="";
+				   	var _id=data;
+				   	var _uid={"id":_id}
+				   	var _url="http://127.0.0.1:8000/v1/up_clothes/update"
+					$.ajax({
+						  type:"POST",
+						  url:_url,
+						  dataType:'json',
+						  data:JSON.stringify(_uid),
+						  contentType:'application/json',
+						  success:function(result){
+						  if (200 == result.code){
+								var data=result.obj;
+								var cloth_name =data.cloth_name;
+								var season =data.season;
+								var style =data.style;
+								var function1 =data.function;
+								var remark =data.remark;
+								var remark =data.remark;
+
+								html_value3 +='<div style="margin-top:100px;font-size:20px">'
+								html_value3 +='<a href="/pet_closet_list" style="font-size:20px;position:absolute;left:35%;top:18%">返回衣服列表</a>'
+								html_value3 += '<ul class="left-form" >';
+               					html_value3 += '<li >';
+<!--							html_value3+='<form action=" "  method="post" class="avatar_form">';-->
+								html_value3 += '</li>';
+								html_value3 += '<li style="padding:8px;">';
+								html_value3+='<p>'+'衣服名称：'+'&nbsp&nbsp&nbsp'
+								html_value3+= '<input type="text"  style="font-size:20px;" class="cloth_name" name="cloth_name" value="' + cloth_name + '"' + 'placeholder="请输入新的衣服名称" required maxlength="10" />';
+								html_value3+='</p>'
+								html_value3 += '</li>';
+								html_value3 += '<li style="padding:8px;">';
+								html_value3+='<p>'+'适应季节：'+'&nbsp&nbsp&nbsp';
+								if(season=='春季'){
+								    console.log('111')
+									html_value3 +='<input class="season1" name="season" type="radio" value="春季" checked>春季'
+									html_value3 +='<input class="season1" name="season" type="radio" value="夏季" >夏季'
+									html_value3 +='<input class="season1" name="season" type="radio" value="秋季" >秋季'
+									html_value3 +='<input class="season" name="season" type="radio" value="冬季">冬季'
+								}else if(season=='夏季'){
+									html_value3 +='<input class="season1" name="season" type="radio" value="春季" >春季'
+									html_value3 +='<input class="season1" name="season" type="radio" value="夏季" checked>夏季'
+									html_value3 +='<input class="season1" name="season" type="radio" value="秋季" >秋季'
+									html_value3 +='<input class="season1" name="season" type="radio" value="冬季" >冬季'
+								}else if(season=='秋季'){
+									html_value3 +='<input class="season1" name="season" type="radio" value="春季" >春季'
+									html_value3 +='<input class="season1" name="season" type="radio" value="夏季" >夏季'
+									html_value3 +='<input class="season1" name="season" type="radio" value="秋季" checked>秋季'
+									html_value3 +='<input class="season1" name="season" type="radio" value="冬季" >冬季'
+								}else if(season=='冬季'){
+									html_value3 +='<input class="season1" name="season" type="radio" value="春季" >春季'
+									html_value3 +='<input class="season1" name="season" type="radio" value="夏季" >夏季'
+									html_value3 +='<input class="season1" name="season" type="radio" value="秋季" >秋季'
+									html_value3 +='<input class="season1" name="season" type="radio" value="冬季" checked >冬季'
+								}
+								html_value3+='</p>'
+								html_value3 += '</li>';
+
+								html_value3 += '<li style="padding:8px;">';
+								html_value3+='<p>'+'衣服款式：'+'&nbsp&nbsp&nbsp';
+								if(style=='棉衣'){
+									html_value3 +='<input class="style1" name="style1" type="radio" value="棉衣" checked>棉衣'
+									html_value3 +='<input class="style1" name="style1" type="radio" value="背心" >背心'
+									html_value3 +='<input class="style1" name="style1" type="radio" value="四脚衣" >四脚衣'
+									html_value3 +='<input class="style1" name="style1" type="radio" value="半身">半身'
+								}else if(style=='背心'){
+									html_value3 +='<input class="style1" name="style1" type="radio" value="棉衣" >棉衣'
+									html_value3 +='<input class="style1" name="style1" type="radio" value="背心" checked>背心'
+									html_value3 +='<input class="style1" name="style1" type="radio" value="四脚衣" >四脚衣'
+									html_value3 +='<input class="style1" name="style1" type="radio" value="半身" >半身'
+								}else if(style=='四脚衣'){
+									html_value3 +='<input class="style1" name="style1" type="radio" value="棉衣" >棉衣'
+									html_value3 +='<input class="style1" name="style1" type="radio" value="背心" >背心'
+									html_value3 +='<input class="style1" name="style1" type="radio" value="四脚衣" checked>四脚衣'
+									html_value3 +='<input class="style1" name="style1" type="radio" value="半身" >半身'
+								}else if(style=='半身'){
+									html_value3 +='<input class="style1" name="style1" type="radio" value="棉衣" >棉衣'
+									html_value3 +='<input class="style1" name="style1" type="radio" value="背心" >背心'
+									html_value3 +='<input class="style1" name="style1" type="radio" value="四脚衣" >秋季'
+									html_value3 +='<input class="style1" name="style1" type="radio" value="半身" checked >半身'
+								}
+								html_value3+='</p>'
+								html_value3 += '</li>';
+
+
+								html_value3 += '<li style="padding:8px;">';
+								html_value3+='<p>'+'衣服功能：'+'&nbsp&nbsp&nbsp';
+								if(function1=='保暖'){
+									html_value3 +='<input class="function2" name="function1" type="radio" value="保暖" checked>保暖'
+									html_value3 +='<input class="function2" name="function1" type="radio" value="防雨" >防雨'
+									html_value3 +='<input class="function2" name="function1" type="radio" value="透气" >透气'
+								}else if(function1=='防雨'){
+									html_value3 +='<input class="function2" name="function1" type="radio" value="保暖" >保暖'
+									html_value3 +='<input class="function2" name="function1" type="radio" value="防雨" checked>防雨'
+									html_value3 +='<input class="function2" name="function1" type="radio" value="透气" >透气'
+
+								}else if(function1=='透气'){
+									html_value3 +='<input class="function2" name="function1" type="radio" value="保暖" >保暖'
+									html_value3 +='<input class="function2" name="function1" type="radio" value="防雨" >防雨'
+									html_value3 +='<input class="function2" name="function1" type="radio" value="透气" checked>透气'
+
+								}
+								html_value3+='</p>'
+								html_value3 += '</li>';
+
+								html_value3+='<p>'+'衣服备注：'+'&nbsp';
+								html_value3+= '<input type="text" class="remark"  style="font-size:20px;" name="remark" value="' + remark + '"' + 'placeholder="请输入新的衣服备注" required maxlength="10" />';
+                                html_value3+='</p>'
+
+
+                                html_value3+= '<input type="text" style="display:none;" class="uid" value="' + _id + '"/>';
+
+
+								html_value3 += '<li style="padding:8px;">';
+<!--
+<!--                            html_value3 +='<input id="update2" type="submit" value="保存">';-->
+                                html_value3 +='<button onclick="update3()">保存</button>';
+                                html_value3 += '</li>';
+
+<!--							html_value3+='</form>'-->
+								html_value3 +='</div>'
+								$(".456").html(html_value3);
+
+		<!--                    window.location.href='/pet_closet_list1';-->
+						  }else{
+						  alert('添加失败！');
+<!--						  window.location.href='/pet_closet_list1';-->
+						     }
+						  }
+					   })
+				    }
+
+
+         function update3(){
+            var cloth_name = $('.cloth_name').val();
+            var season = $('.season1').val();
+            var style = $('.style1').val();
+            var function1 = $('.function2').val();
+            var remark = $('.remark').val();
+            var uid = $('.uid').val();
+            var post_data = {'cloth_name':cloth_name, 'season':season, 'style':style,
+                             'function1':function1,'remark':remark,'uid':uid};
+            console.log(post_data);
+
+             $.ajax({
+                  type:"POST",
+                  url:"http://127.0.0.1:8000/v1/up_clothes/update1",
+                  dataType:'json',
+                  data:JSON.stringify(post_data),
+                  contentType:'application/json',
+                  success:function(result){
+                  if (result.code==200){
+                  alert('修改成功！');
+                  window.location.href='/pet_closet_list';
+                  }else{
+                  alert('修改失败！');
+                  window.location.href='/pet_closet_list';
+                       }
+                     }
+                  })
+            }
+
+
+</script>
+
+</html>
