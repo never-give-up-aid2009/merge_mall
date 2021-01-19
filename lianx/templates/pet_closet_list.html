@@ -59,7 +59,7 @@ position:relative;overflow:hidden">
             </div>
         </div>
         <!-- 内容 -->
-        <div align="center" style="overflow:auto;width: 80%;height:400px;position:absolute;left:110px">
+        <div align="center" style="width: 80%;height:400px;position:absolute;left:110px">
             <table class="layui-table" lay-filter="mylist" lay-size="lg" align="center"
                    style="font-size:20px;overflow:auto">
                 <thead>
@@ -134,7 +134,7 @@ position:relative;overflow:hidden">
 					html_value+='<td></td>';
 					html_value+='<td>'+ id+' </td>';
 					html_value+='<td>';
-					html_value+='<a href="/notice?id='+ uid + '">';
+<!--					html_value+='<a href="/javascript:update('+uid+')">';-->
 					html_value+=cloth_name;
 					html_value+='</a>';
 					html_value+='</td>';
@@ -292,9 +292,13 @@ position:relative;overflow:hidden">
 								var style =data.style;
 								var function1 =data.function;
 								var remark =data.remark;
-								var remark =data.remark;
+								var avatar =data.avatar;
+                                var avatar_url = 'http://127.0.0.1:8000/media/'+ avatar;
+                                html_value3 +='<div style="margin-top:100px;">'
+                                html_value3 += '<p class="avatar"> <img style="width:300px;height:300px;position:absolute;left:50px" src=' + avatar_url + ' alt=""> </p>'
+                                html_value3 +='</div>'
 
-								html_value3 +='<div style="margin-top:100px;font-size:20px">'
+								html_value3 +='<div style="margin-top:100px;font-size:20px;style="position:absolute;left:150px">'
 								html_value3 +='<a href="/pet_closet_list" style="font-size:20px;position:absolute;left:35%;top:18%">返回衣服列表</a>'
 								html_value3 += '<ul class="left-form" >';
                					html_value3 += '<li >';
@@ -309,25 +313,25 @@ position:relative;overflow:hidden">
 								html_value3+='<p>'+'适应季节：'+'&nbsp&nbsp&nbsp';
 								if(season=='春季'){
 								    console.log('111')
-									html_value3 +='<input class="season1" name="season" type="radio" value="春季" checked>春季'
-									html_value3 +='<input class="season1" name="season" type="radio" value="夏季" >夏季'
-									html_value3 +='<input class="season1" name="season" type="radio" value="秋季" >秋季'
-									html_value3 +='<input class="season" name="season" type="radio" value="冬季">冬季'
+									html_value3 +='<input class="season1" name="season1" type="radio" value="春季" checked>春季'
+									html_value3 +='<input class="season1" name="season1" type="radio" value="夏季" >夏季'
+									html_value3 +='<input class="season1" name="season1" type="radio" value="秋季" >秋季'
+									html_value3 +='<input class="season" name="season1" type="radio" value="冬季">冬季'
 								}else if(season=='夏季'){
-									html_value3 +='<input class="season1" name="season" type="radio" value="春季" >春季'
-									html_value3 +='<input class="season1" name="season" type="radio" value="夏季" checked>夏季'
-									html_value3 +='<input class="season1" name="season" type="radio" value="秋季" >秋季'
-									html_value3 +='<input class="season1" name="season" type="radio" value="冬季" >冬季'
+									html_value3 +='<input class="season1" name="season1" type="radio" value="春季" >春季'
+									html_value3 +='<input class="season1" name="season1" type="radio" value="夏季" checked>夏季'
+									html_value3 +='<input class="season1" name="season1" type="radio" value="秋季" >秋季'
+									html_value3 +='<input class="season1" name="season1" type="radio" value="冬季" >冬季'
 								}else if(season=='秋季'){
-									html_value3 +='<input class="season1" name="season" type="radio" value="春季" >春季'
-									html_value3 +='<input class="season1" name="season" type="radio" value="夏季" >夏季'
-									html_value3 +='<input class="season1" name="season" type="radio" value="秋季" checked>秋季'
-									html_value3 +='<input class="season1" name="season" type="radio" value="冬季" >冬季'
+									html_value3 +='<input class="season1" name="season1" type="radio" value="春季" >春季'
+									html_value3 +='<input class="season1" name="season1" type="radio" value="夏季" >夏季'
+									html_value3 +='<input class="season1" name="season1" type="radio" value="秋季" checked>秋季'
+									html_value3 +='<input class="season1" name="season1" type="radio" value="冬季" >冬季'
 								}else if(season=='冬季'){
-									html_value3 +='<input class="season1" name="season" type="radio" value="春季" >春季'
-									html_value3 +='<input class="season1" name="season" type="radio" value="夏季" >夏季'
-									html_value3 +='<input class="season1" name="season" type="radio" value="秋季" >秋季'
-									html_value3 +='<input class="season1" name="season" type="radio" value="冬季" checked >冬季'
+									html_value3 +='<input class="season1" name="season1" type="radio" value="春季" >春季'
+									html_value3 +='<input class="season1" name="season1" type="radio" value="夏季" >夏季'
+									html_value3 +='<input class="season1" name="season1" type="radio" value="秋季" >秋季'
+									html_value3 +='<input class="season1" name="season1" type="radio" value="冬季" checked >冬季'
 								}
 								html_value3+='</p>'
 								html_value3 += '</li>';
@@ -335,7 +339,7 @@ position:relative;overflow:hidden">
 								html_value3 += '<li style="padding:8px;">';
 								html_value3+='<p>'+'衣服款式：'+'&nbsp&nbsp&nbsp';
 								if(style=='棉衣'){
-									html_value3 +='<input class="style1" name="style1" type="radio" value="棉衣" checked>棉衣'
+									html_value3 +='<input class="style1" name="style1" type="radio" value="棉衣" checkedchecked>棉衣'
 									html_value3 +='<input class="style1" name="style1" type="radio" value="背心" >背心'
 									html_value3 +='<input class="style1" name="style1" type="radio" value="四脚衣" >四脚衣'
 									html_value3 +='<input class="style1" name="style1" type="radio" value="半身">半身'
@@ -362,18 +366,18 @@ position:relative;overflow:hidden">
 								html_value3 += '<li style="padding:8px;">';
 								html_value3+='<p>'+'衣服功能：'+'&nbsp&nbsp&nbsp';
 								if(function1=='保暖'){
-									html_value3 +='<input class="function2" name="function1" type="radio" value="保暖" checked>保暖'
-									html_value3 +='<input class="function2" name="function1" type="radio" value="防雨" >防雨'
-									html_value3 +='<input class="function2" name="function1" type="radio" value="透气" >透气'
+									html_value3 +='<input class="function1" name="function1" type="radio" value="保暖" checked>保暖'
+									html_value3 +='<input class="function1" name="function1" type="radio" value="防雨" >防雨'
+									html_value3 +='<input class="function1" name="function1" type="radio" value="透气" >透气'
 								}else if(function1=='防雨'){
-									html_value3 +='<input class="function2" name="function1" type="radio" value="保暖" >保暖'
-									html_value3 +='<input class="function2" name="function1" type="radio" value="防雨" checked>防雨'
-									html_value3 +='<input class="function2" name="function1" type="radio" value="透气" >透气'
+									html_value3 +='<input class="function1" name="function1" type="radio" value="保暖" >保暖'
+									html_value3 +='<input class="function1" name="function1" type="radio" value="防雨" checked>防雨'
+									html_value3 +='<input class="function1" name="function1" type="radio" value="透气" >透气'
 
 								}else if(function1=='透气'){
-									html_value3 +='<input class="function2" name="function1" type="radio" value="保暖" >保暖'
-									html_value3 +='<input class="function2" name="function1" type="radio" value="防雨" >防雨'
-									html_value3 +='<input class="function2" name="function1" type="radio" value="透气" checked>透气'
+									html_value3 +='<input class="function1" name="function1" type="radio" value="保暖" >保暖'
+									html_value3 +='<input class="function1" name="function1" type="radio" value="防雨" >防雨'
+									html_value3 +='<input class="function1" name="function1" type="radio" value="透气" checked>透气'
 
 								}
 								html_value3+='</p>'
@@ -406,12 +410,18 @@ position:relative;overflow:hidden">
 					   })
 				    }
 
+         $(function(){
+
+            $("input:radio").on("click", function() {
+            mark = $(this).val(); });
+
+         })
 
          function update3(){
             var cloth_name = $('.cloth_name').val();
-            var season = $('.season1').val();
-            var style = $('.style1').val();
-            var function1 = $('.function2').val();
+            var season=$("input[name='season1']:checked").val();
+            var style=$("input[name='style1']:checked").val();
+            var function1=$("input[name='function1']:checked").val();
             var remark = $('.remark').val();
             var uid = $('.uid').val();
             var post_data = {'cloth_name':cloth_name, 'season':season, 'style':style,

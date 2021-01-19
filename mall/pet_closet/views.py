@@ -46,7 +46,7 @@ def add_view(request):
             #                       password='1313', nickname='bzx1')
             pet_closet = PetCloset.objects.create(cloth_name=cloth_name, avatar=avatar, season=season,
                                                   style=style, function=function, remark=remark,
-                                                  user_profile_id='王午阳')
+                                                  user_profile_id='bzx')
         except Exception as e:
             print(e)
             result = {'code': 10103, 'error': '用户名已经存在'}
@@ -176,7 +176,7 @@ def update_view(request):
             clothes_json = {}
             clothes_json['id'] = cloth.id
             clothes_json['cloth_name'] = cloth.cloth_name
-            # clothes_json2['avatar'] =  cloth.avatar
+            clothes_json['avatar'] = str(cloth.avatar)
             clothes_json['season'] = cloth.season
             clothes_json['style'] = cloth.style
             clothes_json['function'] = cloth.function
@@ -208,7 +208,7 @@ def update1_view(request):
             tar_cloth.cloth_name = json_obj["cloth_name"]
             tar_cloth.season = json_obj["season"]
             tar_cloth.style = json_obj["style"]
-            tar_cloth.function1 = json_obj["function1"]
+            tar_cloth.function = json_obj["function1"]
             tar_cloth.remark = json_obj["remark"]
             tar_cloth.save()
             print(tar_cloth)
